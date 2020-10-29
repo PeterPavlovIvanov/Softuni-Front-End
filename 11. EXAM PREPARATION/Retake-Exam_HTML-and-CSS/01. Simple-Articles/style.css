@@ -1,0 +1,75 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;1,100;1,300;1,400&family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;1,100;1,200;1,300;1,400&display=swap');
+body {
+    font-family: Lato;
+}
+
+.second header,
+.first h3 {
+    font-family: Montserrat;
+}
+
+section {
+    display: flex;
+    justify-content: space-evenly;
+    align-content: space-between;
+    margin: 21% auto;
+}
+
+.first,
+.second {
+    box-shadow: 0 5px 5px;
+}
+
+.first {
+    background-color: #E3F3FD;
+    border-radius: 10px;
+    padding-right: 20px;
+}
+
+.first ul {
+    list-style-type: none;
+    line-height: 31px;
+}
+
+.first i {
+    color: #44A9F8;
+    margin-right: 20px;
+}
+
+.first h3 {
+    margin-left: 40px;
+}
+
+.second {
+    border: 5px solid #44A9F8;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    padding: 10px 100px;
+    align-items: center;
+}
+
+.second header {
+    display: flex;
+    align-items: center;
+}
+
+.second header span {
+    padding: 10px 0px 0px 0px;
+}
+
+.second header h3 {
+    color: #44A9F8;
+    font-size: 40px;
+}
+
+.second button {
+    background: #44A9F8;
+    padding: 5px 35px;
+    color: white;
+    text-transform: uppercase;
+    outline: none;
+    border: none;
+    border-radius: 4px;
+    box-shadow: 0 0 4px -1px grey;
+}
