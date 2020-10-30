@@ -1,0 +1,35 @@
+@media (max-width:884px) {
+    .newsletter-bottom-content {
+        width: 80%;
+        margin: 0;
+        text-align: center;
+        text-align: left;
+    }
+    .newsletter-bottom h4 {
+        font-family: "Montserrat", "Lato", "Helvetica", sans-serif;
+        font-size: 20px;
+        font-weight: 400;
+        text-align: right;
+    }
+    .newsletter-bottom-content {
+        display: flex;
+        flex-direction: column;
+        margin-top: 20px;
+    }
+    .newsletter-boxes {
+        display: flex;
+        flex-direction: column;
+    }
+    .newsletter-bottom {
+        display: flex;
+        flex-direction: row;
+    }
+    .newsletter-bottom hr {
+        color: #fff;
+        background: #fff;
+        border: none;
+        width: 121%;
+        height: 3px;
+        margin: 2em 12px;
+    }
+}
