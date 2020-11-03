@@ -1,0 +1,256 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;1,100;1,300;1,400&family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;1,100;1,200;1,300;1,400;1,500&display=swap');
+body {
+    font-family: Lato, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.title {
+    font-family: Montserrat, sans-serif;
+}
+
+header {
+    display: flex;
+    flex-direction: row;
+    max-height: 50px;
+    justify-content: space-between;
+}
+
+header ul {
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+    margin-right: 100px;
+}
+
+header ul li {
+    margin: 10px 5px;
+}
+
+header ul li a {
+    text-decoration: none;
+    color: black;
+}
+
+header img {
+    margin-top: 10px;
+}
+
+.first {
+    background-color: #54546D;
+    height: 280px;
+    margin-top: 20px;
+    padding-top: 60px;
+    padding-left: 730px
+}
+
+.first .title {
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.first img {
+    position: absolute;
+    top: 150px;
+    left: -50px;
+}
+
+.second {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    z-index: 1;
+    position: absolute;
+    top: 200px;
+    padding-left: 50px;
+    padding-right: 50px;
+    height: 350px;
+}
+
+.boxDesignBasics,
+.boxFundamentals,
+.boxProfessional {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    width: 28%;
+    border-radius: 6px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.329);
+    align-items: center;
+}
+
+.boxDesignBasics button {
+    border: none;
+    outline: none;
+    color: white;
+    border-radius: 20px;
+    padding: 10px 22px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.329);
+    background-color: #9A5DC6;
+    text-transform: uppercase;
+    margin-top: 40px;
+}
+
+.boxDesignBasics .innerBox {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+    background-image: linear-gradient( to right, #049B3D, #4BD680);
+    color: white;
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
+    width: 100%;
+    margin-top: 82px;
+}
+
+.boxDesignBasics h2 {
+    margin-bottom: 0px;
+    padding-bottom: 0px;
+}
+
+.boxDesignBasics p {
+    margin-top: 5px;
+}
+
+.second .boxFundamentals .innerBox {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    background-image: linear-gradient(to right, #4C6C88, #619ACF);
+    color: white;
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
+    justify-content: space-around;
+    margin-top: 12px;
+}
+
+.second .boxFundamentals .innerBox .box1 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: flex-start;
+    margin-left: 10px;
+}
+
+.second .boxFundamentals .innerBox .box2 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: flex-start;
+    margin-right: 30px;
+}
+
+.second .boxFundamentals p {
+    text-align: center;
+}
+
+.second .boxFundamentals .innerBox .box1 p {
+    margin-top: 0;
+}
+
+.second .boxFundamentals .innerBox .box2 p {
+    margin-top: 0;
+}
+
+.boxFundamentals::after {}
+
+.second .boxProfessional p {
+    margin-top: 0px;
+    text-align: center;
+}
+
+.second .boxProfessional .innerBox {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    background-image: linear-gradient(to right, #4B39A6, #897BDE);
+    color: white;
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
+    justify-content: space-around;
+    margin-top: 44px;
+}
+
+.boxProfessional::after {}
+
+.second .boxProfessional .innerBox .box1 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: flex-start;
+    margin-left: 15px;
+}
+
+.second .boxProfessional .innerBox .box2 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: flex-start;
+    margin-right: 30px;
+}
+
+.third {
+    margin-top: 250px;
+    padding: 0px 248px;
+    color: #54546D;
+}
+
+i {
+    color: #12A945;
+}
+
+#empty {
+    color: #FC4C50;
+}
+
+tr:nth-child(odd) {
+    background-color: #E6E6E6;
+}
+
+tr:nth-child(even) {
+    background-color: #F8F8F8;
+}
+
+td {
+    padding: 10px 70px 10px 20px;
+}
+
+.fourth {
+    margin: 90px auto;
+    padding: 0px 130px;
+    display: flex;
+    flex-direction: row;
+}
+
+.fourth div {
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+}
+
+.fourth img {
+    width: 350px;
+    height: 120px;
+    margin-top: 140px;
+}
+
+footer {
+    background-color: #54546D;
+    color: #857E91;
+    margin-bottom: 0px;
+    padding: 10px;
+    padding-bottom: 20px;
+}
+
+footer p {
+    text-align: center;
+    margin-bottom: 0px;
+}

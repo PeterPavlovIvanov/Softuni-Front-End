@@ -1,0 +1,120 @@
+@media (max-width:600px) {
+    .banner {
+        background-color: #00cdcf;
+        color: #ffffff;
+        padding: 4em 0 2em 0;
+        text-align: center;
+        width: 41%;
+    }
+    .banner h2 {
+        border-style: double solid;
+        border-width: 4px 1px;
+        font-size: 2.4em;
+        line-height: 1.35em;
+        margin: 0 auto 1em;
+        padding: 16px;
+        position: relative;
+        width: 93%;
+        border: 1px solid white;
+    }
+    ul.actions li:last-child {
+        padding-right: 0;
+        width: 90%;
+    }
+    .banner .button.special {
+        background-color: #009a9c;
+        color: #fff !important;
+        width: 100%;
+    }
+    .footer {
+        background-color: #f7f7f7;
+        color: #444;
+        position: relative;
+        padding-bottom: 84px;
+        padding-top: 30px;
+    }
+    .grid-form .form-control {
+        width: 100%;
+        margin-bottom: 2em;
+    }
+    .grid-form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 77%;
+    }
+    .features {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column;
+        justify-content: center;
+        margin-bottom: 2em;
+    }
+    .grid-form .form-control.narrow {
+        width: 99%;
+    }
+    .feature {
+        border-color: #e3e3e3;
+        padding: 0px 15px;
+        width: 43%;
+    }
+    body,
+    input,
+    textarea {
+        font-family: "Raleway", Arial, Helvetica, sans-serif;
+        font-size: 14pt;
+        font-weight: 300;
+        letter-spacing: 0.09em;
+        line-height: 1.65em;
+    }
+    .wrapper.style2 input[type="submit"] {
+        background-color: #555;
+        color: #f7f7f7 !important;
+        width: 100%;
+    }
+    .footer {
+        background-color: #f7f7f7;
+        color: #444;
+        position: relative;
+        padding-bottom: 84px;
+        padding-top: 30px;
+        width: 760px;
+    }
+    .wrapper style2 special {
+        width: 100%;
+        padding: 0;
+    }
+    .textarea {
+        width: 500px;
+    }
+    .wrapper>.inner {
+        /* margin: 0 auto; */
+        width: 600px;
+    }
+    .wrapper>.inner.narrow {
+        width: 17em;
+    }
+    .footer .copyright {
+        color: #bbb;
+        font-size: 0.9em;
+        margin: 0 0 2em 0;
+        padding: 0;
+        text-align: center;
+        text-transform: uppercase;
+        width: 304px;
+    }
+    .wrapper.style2 {
+        background-color: #f7f7f7;
+        color: #444;
+        width: 41%;
+    }
+    .footer:before {
+        background-color: #ddd;
+        content: "";
+        height: 1px;
+        left: 3%;
+        position: absolute;
+        top: 0;
+        width: 25%;
+    }
+}
