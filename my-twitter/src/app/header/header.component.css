@@ -1,0 +1,19 @@
+header {
+    background-color: #0C0C0C;
+    margin: 0;
+    padding: 10px;
+}
+
+ul {
+    display: flex;
+    flex-direction: row;
+    list-style-type: none;
+    justify-content: space-evenly;
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+    color: #00FF00;
+}
