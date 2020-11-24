@@ -7,6 +7,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
+  get isLogged(): boolean{
+    //TODO: actually to get whether a user is logged
+    return false;
+  }
+  
   constructor() { }
 
   ngOnInit(): void {

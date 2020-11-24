@@ -8,23 +8,44 @@ body {
     color: #00FF00;
 }
 
-button {
+.submitBtn {
     border: 2px solid #00FF00;
     color: #00FF00;
     outline: none;
     padding: 0px 10px;
-    margin-top: 10px;
     background-color: transparent;
-    position: relative;
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
 }
 
-button:hover {
+.submitBtn:hover {
     cursor: pointer;
     background-color: #516e51;
     color: white;
+    border-color: white;
 }
 
 a {
     color: rgb(189, 185, 185);
     text-decoration: none;
+}
+
+a:hover {
+    color: rgb(214, 211, 211);
+}
+
+.current-main-content {
+    min-height: calc(100vh - 105px);
+    display: flex;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+}
+
+fieldset {
+    border: 2px solid #00FF00;
+    padding: 20px 20px 40px;
+    background-color: #1f221f;
+    position: relative;
 }

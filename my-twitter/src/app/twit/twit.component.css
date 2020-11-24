@@ -1,0 +1,53 @@
+.twit {
+    background-color: #1f221f;
+    border: 1px solid #00FF00;
+    outline: none;
+    color: #00FF00;
+    margin: 3px 0px;
+    padding: 0px;
+    text-align: center;
+    padding: 2px 10px 0px 20px;
+}
+
+textarea:focus {
+    background-color: #262c26;
+    outline: none;
+}
+
+.postedby {
+    text-align: right;
+    margin: 0px;
+}
+
+.twitcontent {
+    text-align: left;
+}
+
+.twitExtras {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.twitVotes {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 2px;
+}
+
+.like,
+.dislike {
+    background-color: transparent;
+    border: none;
+    outline: none;
+    color: #00FF00;
+}
+
+.dislike {
+    color: red;
+}
+
+.like:hover,
+.dislike:hover {
+    color: #affcaf;
+}

@@ -1,14 +1,17 @@
 <app-header></app-header>
-<fieldset>
-    <legend>login</legend>
-    <form action="">
-        <label for="username">-username-</label>
-        <input type="text" name="username" placeholder="ivan">
+<div class="current-main-content">
+    <fieldset>
+        <legend>login</legend>
+        <form #f="ngForm" (ngSubmit)="onSubmit()" action="">
+            <label for="username">-username-</label>
+            <input type="text" name="username" id="username" placeholder="ivan" ngModel>
 
-        <label for="password">-password-</label>
-        <input type="password" name="password" placeholder="1234">
+            <label for="password">-password-</label>
+            <input type="password" id="password" name="password" placeholder="1234" ngModel>
 
-        <button type="submit">login</button>
-    </form>
-</fieldset>
+            <button class="submitBtn" type="submit">login</button>
+        </form>
+    </fieldset>
+</div>
+
 <app-footer></app-footer>

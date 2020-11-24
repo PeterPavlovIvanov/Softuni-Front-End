@@ -1,20 +1,22 @@
 <app-header></app-header>
-<fieldset>
-    <legend>register</legend>
-    <form action="">
-        <label for="email">-email-</label>
-        <input type="text" name="email" placeholder="address@example.com">
+<div class="current-main-content">
+    <fieldset>
+        <legend>register</legend>
+        <form #f="ngForm" (ngSubmit)="onSubmit()" action="">
+            <label for="email">-email-</label>
+            <input type="text" name="email" id="email" placeholder="address@example.com" ngModel>
 
-        <label for="username">-username-</label>
-        <input type="text" name="username" placeholder="ivan">
+            <label for="username">-username-</label>
+            <input type="text" name="username" id="username" placeholder="ivan" ngModel>
 
-        <label for="password">-password-</label>
-        <input type="password" name="password" placeholder="1234">
+            <label for="password">-password-</label>
+            <input type="password" name="password" id="password" placeholder="1234" ngModel>
 
-        <label for="confirm password">-confirm password-</label>
-        <input type="password" name="confirm password" placeholder="1234">
+            <label for="confirm password">-confirm password-</label>
+            <input type="password" name="confirm password" id="confirm password" placeholder="1234" ngModel>
 
-        <button type="submit">register</button>
-    </form>
-</fieldset>
+            <button class="submitBtn" type="submit">register</button>
+        </form>
+    </fieldset>
+</div>
 <app-footer></app-footer>

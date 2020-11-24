@@ -1,10 +1,13 @@
 <app-header></app-header>
-<fieldset>
-    <legend>twit</legend>
-    <form action="">
-        <label for="content">-content-</label>
-        <textarea type="text" name="content" placeholder="ivan" rows="10" cols="40"></textarea>
-        <button type="submit">twit</button>
-    </form>
-</fieldset>
+<div class="current-main-content">
+    <fieldset>
+        <legend>twit</legend>
+        <form #f="ngForm" (ngSubmit)="onSubmit()" action="">
+            <label for="content">-content-</label>
+            <textarea type="text" id="content" name="content" placeholder="Write your message here..." rows="10" cols="40" ngModel></textarea>
+            <button class="submitBtn" type="submit">twit</button>
+        </form>
+    </fieldset>
+</div>
+
 <app-footer></app-footer>
