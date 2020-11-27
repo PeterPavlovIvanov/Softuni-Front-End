@@ -1,7 +1,6 @@
 import { AfterViewInit, Component, Input, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
-import { User } from '../interfaces/user';
 import { Router } from '@angular/router';
 
 @Component({
@@ -17,20 +16,20 @@ export class RegisterComponent implements AfterViewInit {
   username: string | undefined;
   password: string | undefined;
   confirmPassword: string | undefined;
+  picture: any;
 
-  constructor(private http: HttpClient, private router: Router) { }
+  constructor(private http: HttpClient, private router: Router,) { }
   ngAfterViewInit(): void { }
 
   onSubmit(): void {
     const content = this.form.value;
-    console.log(content.password + " " + content.confirmPassword);
-    if (content.password == content.confirmPassword) {
+    if (content.password === content.confirmPassword) {
       this.http.post('https://dark-twitter-fe5f2.firebaseio.com/users.json', {
         email: content.email,
         password: content.password,
         username: content.username,
       }).subscribe(responseData => {
-        console.log(responseData);
+        //console.log(responseData);
       });
       this.router.navigate(["/user/login"]);
     } else {
@@ -39,4 +38,5 @@ export class RegisterComponent implements AfterViewInit {
       return;
     }
   }
+
 }

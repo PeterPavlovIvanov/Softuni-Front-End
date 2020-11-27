@@ -13,10 +13,12 @@ import { TwitComponent } from './twit/twit.component';
 import { TwitListComponent } from './twit-list/twit-list.component';
 import { FormsModule } from '@angular/forms';
 import { environment } from 'src/environments/environment';
-import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { HttpClientModule } from '@angular/common/http';
+import { AngularFireModule } from '@angular/fire';
+import { storageServiceProvider } from './services/storage.service';
+import { UserService } from './services/user.service';
 
 @NgModule({
   declarations: [
@@ -40,7 +42,10 @@ import { HttpClientModule } from '@angular/common/http';
     AngularFireAuthModule,
     HttpClientModule,
   ],
-  providers: [],
+  providers: [
+    storageServiceProvider,
+    UserService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

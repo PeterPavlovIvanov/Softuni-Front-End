@@ -1,5 +1,7 @@
+import { HttpClient } from '@angular/common/http';
 import { AfterViewInit, Component, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-login',
@@ -13,14 +15,14 @@ export class LoginComponent implements AfterViewInit {
   username: string | undefined;
   password: string | undefined;
 
-  constructor() { }
+  constructor(public userService: UserService) { }
   ngAfterViewInit(): void {
   }
-  
-  onSubmit(){
-    //const content = this.form.value;
+
+  onSubmit() {
     //TODO: Login
-    console.dir(this.form.value);
+    const content = this.form.value;
+    this.userService.login(content);
   }
-  
+
 }
