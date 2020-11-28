@@ -1,14 +1,14 @@
 <div class="twit">
     <p class="twitcontent">
-        Here is the content of the twit that is posted by someone. Here is the content of the twit that is posted by someone. Here is the content of the twit that is posted by someone.
+        {{twit.text}}
     </p>
     <div class="twitExtras">
         <div class="twitVotes">
             <button class="like"><i class="far fa-smile"></i></button>
-            <span class="likes-count">12</span>
+            <span class="likes-count">{{twit.likes}}</span>
             <button class="dislike"><i class="far fa-frown-open"></i></button>
-            <span class="dislikes-count">3</span>
+            <span class="dislikes-count">{{twit.dislikes}}</span>
         </div>
-        <p class="postedby">Posted by: <a href="#">ivan</a></p>
+        <p class="postedby">Posted by: <a href="#" routerLink="/user/{{id}}" (click)="openProfile()">{{name}}</a></p>
     </div>
 </div>

@@ -4,7 +4,8 @@
             <a href="#" [routerLink]="['/home']">Home</a>
         </li>
         <li *ngIf="isLogged">
-            <a href="#" [routerLink]="['/user/profile']">Profile</a>
+            <!-- TODO -->
+            <a href="#" routerLink="/user/{{userId1}}">Profile</a>
         </li>
         <li *ngIf="isLogged">
             <a href="#" [routerLink]="['/twits/add']">Twit</a>

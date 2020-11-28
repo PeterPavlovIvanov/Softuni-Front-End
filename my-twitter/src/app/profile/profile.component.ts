@@ -1,4 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Params } from '@angular/router';
+import { User } from '../interfaces/user';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-profile',
@@ -7,9 +11,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProfileComponent implements OnInit {
 
-  constructor() { }
+  username: string;
+  email: string;
+  userId: string;
+
+  constructor(private userService: UserService, private http: HttpClient, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.route.params
+      .subscribe(
+        (params: Params) => {
+          this.userId = params['uid'];
+        }
+      );
+    this.http.get<User[]>('https://dark-twitter-fe5f2.firebaseio.com/users.json')
+      .subscribe(responseData => {
+        this.username = responseData[this.userId].username;
+        this.email = responseData[this.userId].email;
+      });
   }
 
 }

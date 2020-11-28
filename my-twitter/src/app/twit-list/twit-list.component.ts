@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Twit } from '../interfaces/twit';
+import { TwitService } from '../services/twit.service';
 
 @Component({
   selector: 'app-twit-list',
@@ -7,9 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TwitListComponent implements OnInit {
 
-  constructor() { }
+  twitList: Twit[] = [];
+  constructor(private twitService: TwitService) { }
 
   ngOnInit(): void {
+    this.twitService.loadTwitList().subscribe(twitList => {
+      for (const twit in twitList) {
+        this.twitList.push(twitList[twit]);
+      }
+    });
   }
+
 
 }

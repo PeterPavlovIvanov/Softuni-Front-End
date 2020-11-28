@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { User } from '../interfaces/user';
 import { UserService } from '../services/user.service';
 
 @Component({
@@ -9,6 +10,8 @@ import { UserService } from '../services/user.service';
 })
 export class HeaderComponent implements OnInit {
 
+  userId: string;
+
   get isLogged(): boolean {
     return this.userService.isLogged;;
   }
@@ -16,6 +19,7 @@ export class HeaderComponent implements OnInit {
   constructor(private userService: UserService, private router: Router) { }
 
   ngOnInit(): void {
+    this.userId = this.userService.userId;
   }
 
   handleLogout(): void {

@@ -7,7 +7,10 @@ import { StorageService } from './storage.service';
 @Injectable()
 export class UserService {
 
+  user: User;
+  userId: string;
   isLogged: boolean;
+
   constructor(public storage: StorageService, private http: HttpClient, private router: Router,) {
     this.isLogged = storage.getItem('isLogged');
   }
@@ -20,6 +23,8 @@ export class UserService {
         for (const User in responseData) {
           if (user.username == responseData[User].username) {
             if (user.password == responseData[User].password) {
+              this.user = responseData[User];
+              this.userId = User;
               this.isLogged = true;
               this.storage.setItem('isLogged', true);
               this.router.navigate(["/home"]);
@@ -36,6 +41,7 @@ export class UserService {
   }
 
   logout(): void {
+    this.user = null;
     this.isLogged = false;
     this.storage.setItem('isLogged', false);
   }
