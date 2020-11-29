@@ -4,9 +4,9 @@
 body {
     margin: 0px;
     font-family: 'Courier Prime', monospace;
-    background-color: #0C0C0C;
     color: #00FF00;
-    background-image: url('./background.gif');
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.5) 20%, rgba(0, 0, 0, 0.5)), url('./background.gif');
+    user-select: none;
 }
 
 .submitBtn,

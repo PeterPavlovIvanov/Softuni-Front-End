@@ -11,7 +11,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { TwitAddComponent } from './twit-add/twit-add.component';
 import { TwitComponent } from './twit/twit.component';
 import { TwitListComponent } from './twit-list/twit-list.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { environment } from 'src/environments/environment';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireAuthModule } from '@angular/fire/auth';

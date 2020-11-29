@@ -23,7 +23,7 @@ export class TwitAddComponent implements AfterViewInit {
 
   onSubmit(): void {
     const content = this.form.value;
-    if (content.text.length >= 4 && this.userService.user !== null) {
+    if (content.text.length >= 4 && this.userService.user !== null && this.userService.user !== undefined) {
       this.http.post<Twit[]>('https://dark-twitter-fe5f2.firebaseio.com/twits.json', {
         text: content.text,
         likes: 0,
