@@ -1,5 +1,6 @@
 .twit {
-    background-color: #1f221f;
+    /* background-color: #1f221f; */
+    background-color: rgba(30, 33, 30, 0.8);
     border: 1px solid #00FF00;
     outline: none;
     color: #00FF00;
@@ -7,6 +8,7 @@
     padding: 0px;
     text-align: center;
     padding: 2px 10px 0px 20px;
+    margin: 15px 0px;
 }
 
 textarea:focus {

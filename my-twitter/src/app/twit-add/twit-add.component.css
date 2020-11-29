@@ -1,11 +1,12 @@
 textarea {
-    background-color: #1f221f;
+    /* background-color: #1f221f; */
     border: none;
     outline: none;
     color: #00FF00;
     margin: 0px 0px 5px;
     padding: 0px;
-    text-align: center
+    text-align: center;
+    background-color: rgba(31, 34, 31, 0.6);
 }
 
 ::placeholder {

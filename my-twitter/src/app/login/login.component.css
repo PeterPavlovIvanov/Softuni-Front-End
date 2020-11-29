@@ -1,5 +1,6 @@
 input {
-    background-color: #1f221f;
+    /* background-color: #1f221f; */
+    background-color: rgba(31, 34, 31, 0.6);
     border: none;
     outline: none;
     color: #00FF00;

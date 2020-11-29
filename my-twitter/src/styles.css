@@ -6,6 +6,7 @@ body {
     font-family: 'Courier Prime', monospace;
     background-color: #0C0C0C;
     color: #00FF00;
+    background-image: url('./background.gif');
 }
 
 .submitBtn,
@@ -64,6 +65,7 @@ a:hover {
 fieldset {
     border: 2px solid #00FF00;
     padding: 20px 20px 40px;
-    background-color: #1f221f;
+    background-color: rgba(30, 33, 30, 0.8);
+    /* background-color: #1f221f; */
     position: relative;
 }
