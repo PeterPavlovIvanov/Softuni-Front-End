@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, ViewChild } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
 import { UserService } from '../services/user.service';
 
 @Component({
@@ -9,19 +9,28 @@ import { UserService } from '../services/user.service';
 })
 export class LoginComponent implements AfterViewInit {
   @ViewChild('f')
-  form!: NgForm;
+  ngForm!: NgForm;
+  form: FormGroup;
 
   username: string | undefined;
   password: string | undefined;
 
-  constructor(public userService: UserService) { }
+  constructor(public userService: UserService, private fb: FormBuilder) {
+    const passwordControl = this.fb.control('test-password', [Validators.required, Validators.minLength(4)]);
+    this.form = this.fb.group({
+      username: ['test-username', [Validators.required, Validators.minLength(4)], []],
+      password: passwordControl,
+    });
+  }
+
   ngAfterViewInit(): void {
   }
 
   onSubmit() {
-    //TODO: Login
-    const content = this.form.value;
-    this.userService.login(content);
+    let passwordCorrect = this.form.controls.password.errors;
+    let usernameCorrect = this.form.controls.username.errors;
+    const content = this.ngForm.value;
+    this.userService.login(content, usernameCorrect, passwordCorrect);
   }
 
 }

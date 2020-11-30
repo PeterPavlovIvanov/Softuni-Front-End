@@ -2,21 +2,47 @@
 <div class="current-main-content">
     <fieldset>
         <legend>register</legend>
-        <form #f="ngForm" (ngSubmit)="onSubmit()" action="">
+        <form [formGroup]="form" #f="ngForm" (ngSubmit)="onSubmit()">
+            <!-- email -->
             <label for="email">-email-</label>
-            <input type="text" name="email" id="email" placeholder="address@example.com" ngModel>
+            <input formControlName="email" type="text" name="email" id="email" placeholder="address@example.com" appEmailValidator ngModel>
+            <div *ngIf="form.get('email').touched && form.get('email').errors?.required" class="vaidation-error">Email is required!
+            </div>
+            <div *ngIf="form.get('email').touched && form.get('email').errors?.emailValidator" class="validation-error">Email is invalid!
+            </div>
 
+
+            <!-- username -->
             <label for="username">-username-</label>
-            <input type="text" name="username" id="username" placeholder="ivan" ngModel>
+            <input formControlName="username" type="text" name="username" id="username" placeholder="ivan" ngModel>
+            <div *ngIf="form.get('username').touched && form.get('username').errors?.required" class="validation-error">Username is required!
+            </div>
+            <div *ngIf="form.get('username').touched && form.get('username').errors?.minlength" class="validation-error">Username should be more than {{form.get('username').errors?.minlength?.requiredLength}} chars;
+            </div>
+            <div *ngIf="form.get('username').touched && form.get('username').errors?.isUsernameTakenValidation" class="validation-error">Username is taken;
+            </div>
+            <!-- <div *ngIf="usernameTaken" class="validation-error">Username is taken;
+            </div> -->
 
+
+            <!-- password -->
             <label for="password">-password-</label>
-            <input type="password" name="password" id="password" placeholder="1234" ngModel>
+            <input formControlName="password" type="password" name="password" id="password" placeholder="1234" ngModel>
+            <div *ngIf="form.get('password').touched && form.get('password').errors?.required" class="validation-error">Password is required!
+            </div>
+            <div *ngIf="form.get('password').touched && form.get('password').errors?.minlength" class="validation-error">Password minimum length is {{form.get('password').errors?.minlength?.requiredLength}} characters
+            </div>
 
+
+            <!-- confirm password -->
             <label for="confirm password">-confirm password-</label>
-            <input type="password" name="confirmPassword" id="confirm password" placeholder="1234" ngModel>
-            <!-- 
-            <label for="url">-upload picture-</label>
-            <input type="file" name="url" id="url" (change)="uploadPicture($event)" ngModel> -->
+            <input formControlName="confirmPassword" type="password" name="confirmPassword" id="confirm password" placeholder="1234" ngModel>
+            <div *ngIf="form.get('confirmPassword').touched && form.get('confirmPassword').errors?.required" class="validation-error">Password is required!
+            </div>
+            <div *ngIf="form.get('confirmPassword').touched && form.get('confirmPassword').errors?.minlength" class="validation-error">Password minimum length is {{form.get('confirmPassword').errors?.minlength?.requiredLength}} characters
+            </div>
+            <div *ngIf="form.get('confirmPassword').touched && form.get('confirmPassword').errors?.rePasswordValidator" class="validation-error">Passwords do not match
+            </div>
 
             <button class="submitBtn" type="submit">register</button>
         </form>

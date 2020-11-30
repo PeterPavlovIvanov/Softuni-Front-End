@@ -41,6 +41,8 @@ import { UserService } from './services/user.service';
     AngularFirestoreModule,
     AngularFireAuthModule,
     HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
   ],
   providers: [
     storageServiceProvider,

@@ -2,12 +2,22 @@
 <div class="current-main-content">
     <fieldset>
         <legend>login</legend>
-        <form #f="ngForm" (ngSubmit)="onSubmit()" action="">
+        <form [formGroup]="form" #f="ngForm" (ngSubmit)="onSubmit()">
+            <!-- username -->
             <label for="username">-username-</label>
-            <input type="text" name="username" id="username" placeholder="ivan" ngModel>
+            <input formControlName="username" type="text" name="username" id="username" placeholder="ivan" ngModel>
+            <div *ngIf="form.get('username').touched && form.get('username').errors?.required" class="validation-error">Password is required!
+            </div>
+            <div *ngIf="form.get('username').touched && form.get('username').errors?.minlength" class="validation-error">Username should be more than {{form.get('username').errors?.minlength?.requiredLength}} chars;
+            </div>
 
+            <!-- password -->
             <label for="password">-password-</label>
-            <input type="password" id="password" name="password" placeholder="1234" ngModel>
+            <input formControlName="password" type="password" id="password" name="password" placeholder="1234" ngModel>
+            <div *ngIf="form.get('password').touched && form.get('password').errors?.required" class="validation-error">Password is required!
+            </div>
+            <div *ngIf="form.get('password').touched && form.get('password').errors?.minlength" class="validation-error">Password minimum length is {{form.get('password').errors?.minlength?.requiredLength}} characters
+            </div>
 
             <button class="submitBtn" type="submit">login</button>
         </form>

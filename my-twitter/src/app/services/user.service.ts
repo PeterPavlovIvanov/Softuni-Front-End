@@ -15,7 +15,7 @@ export class UserService {
     this.isLogged = storage.getItem('isLogged');
   }
 
-  login(user: User): void {
+  login(user: User, passwordCorrect: any, usernameCorrect: any): void {
     let flag = false;
 
     this.http.get<User[]>('https://dark-twitter-fe5f2.firebaseio.com/users.json')

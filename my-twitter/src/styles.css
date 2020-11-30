@@ -69,3 +69,9 @@ fieldset {
     /* background-color: #1f221f; */
     position: relative;
 }
+
+.validation-error {
+    font-size: 10px;
+    font-weight: lighter;
+    color: rgb(255, 115, 115);
+}
