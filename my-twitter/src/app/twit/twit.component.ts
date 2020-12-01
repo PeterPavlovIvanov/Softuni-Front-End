@@ -3,6 +3,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Twit } from '../interfaces/twit';
 import { User } from '../interfaces/user';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-twit',
@@ -16,7 +17,7 @@ export class TwitComponent implements OnInit {
   name: string;
   id: string;
 
-  constructor(private http: HttpClient, private router: Router, ) { }
+  constructor(private http: HttpClient, private router: Router, private userService: UserService) { }
 
   ngOnInit(): void {
     this.name = this.twit.user.username;
@@ -32,6 +33,50 @@ export class TwitComponent implements OnInit {
           }
         }
       });
+  }
+
+  like(currentTwit: any) {
+    let currentUsername = this.userService.user.username;
+
+    let newArr = []
+    currentTwit.usersDislike.forEach(username => {
+      console.log("Username: "+ username)
+      if (username !== currentUsername) {
+        newArr.push(username);
+      }
+    })
+    currentTwit.usersDislike = newArr;
+    //currentTwit.usersDislike.filter(username => username != currentUsername);
+
+    if (!currentTwit.usersLike.some(username => username === currentUsername)) {
+      currentTwit.usersLike.push(currentUsername);
+    }
+
+    this.http.put(`https://dark-twitter-fe5f2.firebaseio.com/twits/${currentTwit.id}.json`
+      , currentTwit)
+      .subscribe(console.log);
+  }
+
+  dislike(currentTwit: any) {
+    let currentUsername = this.userService.user.username;
+
+    let newArr = []
+    currentTwit.usersLike.forEach(username => {
+      console.log("Username: "+ username)
+      if (username !== currentUsername) {
+        newArr.push(username);
+      }
+    })
+    currentTwit.usersLike = newArr;
+    //currentTwit.usersLike.filter(username => username != currentUsername);
+
+    if (!currentTwit.usersDislike.some(username => username === currentUsername)) {
+      currentTwit.usersDislike.push(currentUsername);
+    }
+
+    this.http.put(`https://dark-twitter-fe5f2.firebaseio.com/twits/${currentTwit.id}.json`
+      , currentTwit)
+      .subscribe(console.log);
   }
 
 }

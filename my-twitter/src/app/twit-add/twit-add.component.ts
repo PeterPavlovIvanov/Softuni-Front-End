@@ -33,9 +33,9 @@ export class TwitAddComponent implements AfterViewInit {
     if (!this.form.controls.text.errors && this.userService.user !== undefined) {
       this.http.post<Twit[]>('https://dark-twitter-fe5f2.firebaseio.com/twits.json', {
         text: content.text,
-        likes: 0,
-        dislikes: 0,
         user: this.userService.user,
+        usersLike: [this.userService.user.username],
+        usersDislike: [this.userService.user.username],
       })
         .subscribe(responseData => {
           //TODO: something maybe?

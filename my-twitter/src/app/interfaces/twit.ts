@@ -1,8 +1,9 @@
 import { User } from './user';
 
 export interface Twit {
+    id: string,
     text: string;
-    likes: number;
-    dislikes: number;
+    usersLike: [],
+    usersDislike: [],
     user: User;
 }

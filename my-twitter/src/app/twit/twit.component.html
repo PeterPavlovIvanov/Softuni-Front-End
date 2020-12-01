@@ -4,10 +4,10 @@
     </p>
     <div class="twitExtras">
         <div class="twitVotes">
-            <button class="like"><i class="far fa-smile"></i></button>
-            <span class="likes-count">{{twit.likes}}</span>
-            <button class="dislike"><i class="far fa-frown-open"></i></button>
-            <span class="dislikes-count">{{twit.dislikes}}</span>
+            <button class="like" (click)="like(twit)"><i class="far fa-smile"></i></button>
+            <span class="likes-count">{{twit.usersLike.length - 1}}</span>
+            <button class="dislike" (click)="dislike(twit)"><i class="far fa-frown-open"></i></button>
+            <span class="dislikes-count">{{twit.usersDislike.length - 1}}</span>
         </div>
         <p class="postedby">Posted by: <a href="#" routerLink="/user/{{id}}" (click)="openProfile()">{{name}}</a></p>
     </div>

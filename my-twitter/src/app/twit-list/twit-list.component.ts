@@ -19,7 +19,7 @@ export class TwitListComponent implements OnInit {
     this.isLogged = this.userService.isLogged;
     this.twitService.loadTwitList().subscribe(twitList => {
       for (const twit in twitList) {
-        this.twitList.push(twitList[twit]);
+        this.twitList.push({...twitList[twit],id:twit});
       }
     });
   }
