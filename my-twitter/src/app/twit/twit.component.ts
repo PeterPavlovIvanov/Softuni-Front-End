@@ -37,8 +37,10 @@ export class TwitComponent implements OnInit {
 
   like(currentTwit: any) {
     let currentUsername = this.userService.user.username;
-
-    let newArr = []
+    if(currentUsername == currentTwit.user.username){
+      return;
+    }
+    let newArr = [];
     currentTwit.usersDislike.forEach(username => {
       console.log("Username: "+ username)
       if (username !== currentUsername) {
@@ -46,7 +48,6 @@ export class TwitComponent implements OnInit {
       }
     })
     currentTwit.usersDislike = newArr;
-    //currentTwit.usersDislike.filter(username => username != currentUsername);
 
     if (!currentTwit.usersLike.some(username => username === currentUsername)) {
       currentTwit.usersLike.push(currentUsername);
@@ -59,8 +60,10 @@ export class TwitComponent implements OnInit {
 
   dislike(currentTwit: any) {
     let currentUsername = this.userService.user.username;
-
-    let newArr = []
+    if(currentUsername == currentTwit.user.username){
+      return;
+    }
+    let newArr = [];
     currentTwit.usersLike.forEach(username => {
       console.log("Username: "+ username)
       if (username !== currentUsername) {
@@ -68,7 +71,6 @@ export class TwitComponent implements OnInit {
       }
     })
     currentTwit.usersLike = newArr;
-    //currentTwit.usersLike.filter(username => username != currentUsername);
 
     if (!currentTwit.usersDislike.some(username => username === currentUsername)) {
       currentTwit.usersDislike.push(currentUsername);
