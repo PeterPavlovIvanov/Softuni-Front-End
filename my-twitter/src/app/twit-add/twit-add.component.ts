@@ -1,9 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Twit } from '../interfaces/twit';
 import { UserService } from '../services/user.service';
+import { emailValidator, rePasswordValidatorFactory } from '../validators';
 
 @Component({
   selector: 'app-twit-add',
@@ -12,18 +13,24 @@ import { UserService } from '../services/user.service';
 })
 export class TwitAddComponent implements AfterViewInit {
   @ViewChild('f')
-  form!: NgForm;
+  ngForm!: NgForm;
+  form: FormGroup;
 
   text: string | undefined;
 
-  constructor(private http: HttpClient, private router: Router, private userService: UserService) { }
+  constructor(private http: HttpClient, private router: Router, private userService: UserService,
+    private fb: FormBuilder,) {
+    this.form = this.fb.group({
+      text: ['this is an example', [Validators.required, Validators.minLength(10), Validators.maxLength(410)], []],
+    });
+  }
   ngAfterViewInit(): void {
 
   }
 
   onSubmit(): void {
-    const content = this.form.value;
-    if (content.text.length >= 4 && this.userService.user !== null && this.userService.user !== undefined) {
+    const content = this.ngForm.value;
+    if (!this.form.controls.text.errors && this.userService.user !== undefined) {
       this.http.post<Twit[]>('https://dark-twitter-fe5f2.firebaseio.com/twits.json', {
         text: content.text,
         likes: 0,
@@ -31,6 +38,7 @@ export class TwitAddComponent implements AfterViewInit {
         user: this.userService.user,
       })
         .subscribe(responseData => {
+          //TODO: something maybe?
           //console.log(responseData);
         });
       this.router.navigate(["/home"]);
@@ -39,7 +47,7 @@ export class TwitAddComponent implements AfterViewInit {
       console.log("Form incorrect!")
       return;
     }
-    //TODO: Send model to API​
+
   }
 
 }

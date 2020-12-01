@@ -2,10 +2,18 @@
 <div class="current-main-content">
     <fieldset>
         <legend>twit</legend>
-        <form #f="ngForm" (ngSubmit)="onSubmit()" action="">
-            <label for="text">-content-</label>
-            <textarea type="text" id="content" name="text" placeholder="Write your message here..." rows="10" cols="40" ngModel></textarea>
-            <button class="submitBtn" type="submit">twit</button>
+        <form [formGroup]="form" #f="ngForm" (ngSubmit)="onSubmit()">
+            <label for=" text ">-content-</label>
+            <textarea formControlName="text" type="text " id="text " name="text " placeholder="Write your message here... " rows="10 " cols="40 " ngModel></textarea>
+
+            <div *ngIf="form.get('text').touched && form.get('text').errors?.required" class="validation-error">Content is required!
+            </div>
+            <div *ngIf="form.get('text').touched && form.get('text').errors?.minlength" class="validation-error">The text should be more than {{form.get('text').errors?.minlength?.requiredLength}} chars
+            </div>
+            <div *ngIf="form.get('text').touched && form.get('text').errors?.maxlength" class="validation-error">The text should be less than {{form.get('text').errors?.maxlength?.requiredLength}} chars
+            </div>
+
+            <button class="submitBtn " type="submit ">twit</button>
         </form>
     </fieldset>
 </div>
