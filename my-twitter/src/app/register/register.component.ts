@@ -1,4 +1,4 @@
-import {  Component, ViewChild } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
@@ -37,14 +37,19 @@ export class RegisterComponent {
       this.http.get<User[]>('https://dark-twitter-fe5f2.firebaseio.com/users.json')
         .subscribe(responseData => {
           let isUsernameTaken = false;
+          let isEmailTaken = false;
           for (const User in responseData) {
-            console.log(this.form.controls.username.value == responseData[User].username);
+            if (this.form.controls.email.value == responseData[User].email) {
+              isEmailTaken = true;
+            }
             if (this.form.controls.username.value == responseData[User].username) {
               isUsernameTaken = true;
+            }
+            if (isEmailTaken && isUsernameTaken) {
               break;
             }
           }
-          if (!isUsernameTaken) {
+          if (!isUsernameTaken && !isEmailTaken) {
             this.http.post('https://dark-twitter-fe5f2.firebaseio.com/users.json', {
               email: content.email,
               password: content.password,
@@ -56,7 +61,12 @@ export class RegisterComponent {
               });
             this.router.navigate(["/user/login"]);
           } else {
-            alert("Username is taken.")
+            if (isUsernameTaken) {
+              alert("Username is taken.")
+            }
+            if (isEmailTaken) {
+              alert("Email is registered.")
+            }
           }
         });
     } else {

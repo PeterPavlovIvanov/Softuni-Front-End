@@ -5,5 +5,5 @@ export interface Twit {
     text: string;
     usersLike: [],
     usersDislike: [],
-    user: User;
+    username: string;
 }

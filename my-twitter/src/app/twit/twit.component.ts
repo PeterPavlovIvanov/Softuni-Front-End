@@ -20,7 +20,7 @@ export class TwitComponent implements OnInit {
   constructor(private http: HttpClient, private router: Router, private userService: UserService) { }
 
   ngOnInit(): void {
-    this.name = this.twit.user.username;
+    this.name = this.twit.username;
   }
 
   openProfile() {

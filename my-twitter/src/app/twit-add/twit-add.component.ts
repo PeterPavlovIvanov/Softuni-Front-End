@@ -3,8 +3,8 @@ import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Twit } from '../interfaces/twit';
+import { User } from '../interfaces/user';
 import { UserService } from '../services/user.service';
-import { emailValidator, rePasswordValidatorFactory } from '../validators';
 
 @Component({
   selector: 'app-twit-add',
@@ -25,22 +25,21 @@ export class TwitAddComponent implements AfterViewInit {
     });
   }
   ngAfterViewInit(): void {
-
+    this.http.get<User[]>('https://dark-twitter-fe5f2.firebaseio.com/users.json').subscribe(console.log);
   }
 
   onSubmit(): void {
     const content = this.ngForm.value;
+    let currentTwit = {
+      text: content.text,
+      username: this.userService.user.username,
+      usersLike: [this.userService.user.username],
+      usersDislike: [this.userService.user.username],
+    };
     if (!this.form.controls.text.errors && this.userService.user !== undefined) {
-      this.http.post<Twit[]>('https://dark-twitter-fe5f2.firebaseio.com/twits.json', {
-        text: content.text,
-        user: this.userService.user,
-        usersLike: [this.userService.user.username],
-        usersDislike: [this.userService.user.username],
-      })
-        .subscribe(responseData => {
-          //TODO: something maybe?
-          //console.log(responseData);
-        });
+      this.http.post<Twit[]>('https://dark-twitter-fe5f2.firebaseio.com/twits.json', currentTwit)
+        .subscribe();
+
       this.router.navigate(["/home"]);
     } else {
       //TODO:

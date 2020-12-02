@@ -5,5 +5,9 @@
         <p>username: {{username}}</p>
         <p>email: {{email}}</p>
     </fieldset>
+    <div *ngIf="currentTwits && isLogged">
+        <app-twit *ngFor="let twit of currentTwits" [twit]="twit"></app-twit>
+        <div *ngIf="currentTwits.length === 0">No Twits!</div>
+    </div>
 </div>
 <app-footer></app-footer>

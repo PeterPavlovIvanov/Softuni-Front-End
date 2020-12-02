@@ -13,15 +13,17 @@ export class TwitListComponent implements OnInit {
 
   twitList: Twit[] = [];
   isLogged: boolean;
-  constructor(private twitService: TwitService, private userService: UserService,private router:Router) { }
+  constructor(private twitService: TwitService, private userService: UserService, private router: Router) { }
 
   ngOnInit(): void {
     this.isLogged = this.userService.isLogged;
-    this.twitService.loadTwitList().subscribe(twitList => {
-      for (const twit in twitList) {
-        this.twitList.push({...twitList[twit],id:twit});
-      }
-    });
+    setTimeout(() => {
+      this.twitService.loadTwitList().subscribe(twitList => {
+        for (const twit in twitList) {
+          this.twitList.push({ ...twitList[twit], id: twit });
+        }
+      });
+    }, 250);
   }
 
 
