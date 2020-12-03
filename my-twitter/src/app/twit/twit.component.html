@@ -9,6 +9,6 @@
             <button class="dislike" (click)="dislike(twit)"><i class="far fa-frown-open"></i></button>
             <span class="dislikes-count">{{twit.usersDislike.length - 1}}</span>
         </div>
-        <p class="postedby">Posted by: <a href="#" routerLink="/user/{{id}}" (click)="openProfile()">{{name}}</a></p>
+        <p class="postedby">Posted by: <span class="profileName" (click)="openProfile()">{{name}}</span></p>
     </div>
 </div>

@@ -32,17 +32,17 @@ export class TwitComponent implements OnInit {
             break;
           }
         }
+        this.router.navigate([`/user/${this.id}`]);
       });
   }
 
   like(currentTwit: any) {
     let currentUsername = this.userService.user.username;
-    if(currentUsername == currentTwit.user.username){
+    if (currentUsername == currentTwit.username) {
       return;
     }
     let newArr = [];
     currentTwit.usersDislike.forEach(username => {
-      console.log("Username: "+ username)
       if (username !== currentUsername) {
         newArr.push(username);
       }
@@ -60,12 +60,11 @@ export class TwitComponent implements OnInit {
 
   dislike(currentTwit: any) {
     let currentUsername = this.userService.user.username;
-    if(currentUsername == currentTwit.user.username){
+    if (currentUsername == currentTwit.username) {
       return;
     }
     let newArr = [];
     currentTwit.usersLike.forEach(username => {
-      console.log("Username: "+ username)
       if (username !== currentUsername) {
         newArr.push(username);
       }

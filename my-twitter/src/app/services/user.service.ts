@@ -13,6 +13,8 @@ export class UserService {
 
   constructor(public storage: StorageService, private http: HttpClient, private router: Router,) {
     this.isLogged = storage.getItem('isLogged');
+    this.user = this.storage.getItem('user');
+    this.userId = this.storage.getItem('userId');
   }
 
   login(user: User, passwordCorrect: any, usernameCorrect: any): void {
@@ -27,6 +29,8 @@ export class UserService {
               this.userId = User;
               this.isLogged = true;
               this.storage.setItem('isLogged', true);
+              this.storage.setItem('user', JSON.stringify(responseData[User]));
+              this.storage.setItem('userId', JSON.stringify(User));
               this.router.navigate(["/home"]);
               return;
             } else {

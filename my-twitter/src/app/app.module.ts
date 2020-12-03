@@ -19,6 +19,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AngularFireModule } from '@angular/fire';
 import { storageServiceProvider } from './services/storage.service';
 import { UserService } from './services/user.service';
+import { appInterceptorProvider } from './app.interceptor';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import { UserService } from './services/user.service';
   ],
   providers: [
     storageServiceProvider,
-    UserService
+    UserService,
+    appInterceptorProvider,
   ],
   bootstrap: [AppComponent]
 })

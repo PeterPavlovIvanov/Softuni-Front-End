@@ -5,6 +5,7 @@
 
 export const environment = {
   production: false,
+  apiUrl: 'https://dark-twitter-fe5f2.firebaseio.com/',
   firebaseConfig: {
     apiKey: "AIzaSyCzmlTvmZsWmKu5vBXebSAqcIXe6tPK6sM",
     authDomain: "dark-twitter-fe5f2.firebaseapp.com",

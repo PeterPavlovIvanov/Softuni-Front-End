@@ -53,3 +53,12 @@ textarea:focus {
 .dislike:hover {
     color: #affcaf;
 }
+
+.profileName {
+    color: rgb(156, 156, 156);
+}
+
+.profileName:hover {
+    color: white;
+    cursor: pointer;
+}

@@ -6,7 +6,7 @@
             <!-- email -->
             <label for="email">-email-</label>
             <input formControlName="email" type="text" name="email" id="email" placeholder="address@example.com" appEmailValidator ngModel>
-            <div *ngIf="form.get('email').touched && form.get('email').errors?.required" class="vaidation-error">Email is required!
+            <div *ngIf="form.get('email').touched && form.get('email').errors?.required" class="validation-error">Email is required!
             </div>
             <div *ngIf="form.get('email').touched && form.get('email').errors?.emailValidator" class="validation-error">Email is invalid!
             </div>

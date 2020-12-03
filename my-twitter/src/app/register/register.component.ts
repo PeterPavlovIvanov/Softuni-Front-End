@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { emailValidator, rePasswordValidatorFactory } from '../validators';
 import { User } from '../interfaces/user';
 
+
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -29,7 +30,6 @@ export class RegisterComponent {
 
   onSubmit(): void {
     const content = this.ngForm.value;
-
 
     if (!this.form.controls.confirmPassword.errors && !this.form.controls.password.errors &&
       !this.form.controls.username.errors && !this.form.controls.email.errors) {

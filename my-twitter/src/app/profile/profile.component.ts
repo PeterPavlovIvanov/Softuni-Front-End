@@ -33,16 +33,17 @@ export class ProfileComponent implements OnInit {
       .subscribe(responseData => {
         this.username = responseData[this.userId].username;
         this.email = responseData[this.userId].email;
+        this.http.get<Twit[]>('https://dark-twitter-fe5f2.firebaseio.com/twits.json')
+          .subscribe(responseData2 => {
+            for (const Twit in responseData2) {
+              if (responseData2[Twit].username === this.username) {
+                this.currentTwits.push({ ...responseData2[Twit], id: Twit });
+              }
+            }
+          });
       });
 
-    this.http.get<Twit[]>('https://dark-twitter-fe5f2.firebaseio.com/twits.json')
-      .subscribe(responseData => {
-        for (const Twit in responseData) {
-          if (responseData[Twit].username === this.userService.user.username) {
-            this.currentTwits.push({ ...responseData[Twit], id: Twit });
-          }
-        }
-      });
+
   }
 
 }
