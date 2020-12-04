@@ -1,0 +1,15 @@
+<app-header></app-header>
+<div class="current-main-content" @fade>
+    <p *ngIf="topLiked" (click)="switchMode()">Top liked posts</p>
+    <div *ngIf="currentMostLikedTwits && isLogged && topLiked">
+        <app-twit *ngFor="let twit of currentMostLikedTwits" [twit]="twit"></app-twit>
+        <div *ngIf="currentMostLikedTwits.length === 0">No Twits!</div>
+    </div>
+
+    <p *ngIf="!topLiked" (click)="switchMode()">Top disliked posts</p>
+    <div *ngIf="currentMostDislikedTwits && isLogged && !topLiked">
+        <app-twit *ngFor="let twit of currentMostDislikedTwits" [twit]="twit"></app-twit>
+        <div *ngIf="currentMostDislikedTwits.length === 0">No Twits!</div>
+    </div>
+</div>
+<app-footer></app-footer>

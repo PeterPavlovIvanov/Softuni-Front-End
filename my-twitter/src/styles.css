@@ -76,3 +76,19 @@ fieldset {
     font-weight: lighter;
     color: rgb(255, 115, 115);
 }
+
+::-webkit-scrollbar {
+    width: 15px;
+}
+
+ ::-webkit-scrollbar-track {
+    background: black;
+}
+
+ ::-webkit-scrollbar-thumb {
+    background: green;
+}
+
+ ::-webkit-scrollbar-thumb:hover {
+    background: darkgreen;
+}

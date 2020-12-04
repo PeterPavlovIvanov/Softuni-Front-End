@@ -62,3 +62,7 @@ textarea:focus {
     color: white;
     cursor: pointer;
 }
+
+button:hover {
+    cursor: pointer;
+}

@@ -4,6 +4,7 @@ import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { ProfileComponent } from './profile/profile.component';
 import { RegisterComponent } from './register/register.component';
+import { TopTwitsComponent } from './top-twits/top-twits.component';
 import { TwitAddComponent } from './twit-add/twit-add.component';
 
 const routes: Routes = [
@@ -31,6 +32,10 @@ const routes: Routes = [
   {
     path: 'twits/add',
     component: TwitAddComponent,
+  },
+  {
+    path: 'twits/top',
+    component: TopTwitsComponent,
   },
 ];
 

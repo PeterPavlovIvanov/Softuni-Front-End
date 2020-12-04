@@ -8,6 +8,9 @@
             <a href="#" routerLink="/user/{{userId}}">Profile</a>
         </li>
         <li *ngIf="isLogged">
+            <a href="#" [routerLink]="['/twits/top']">Top Twits</a>
+        </li>
+        <li *ngIf="isLogged">
             <a href="#" [routerLink]="['/twits/add']">Twit</a>
         </li>
         <li *ngIf="!isLogged">

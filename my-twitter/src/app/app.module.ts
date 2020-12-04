@@ -21,6 +21,7 @@ import { storageServiceProvider } from './services/storage.service';
 import { UserService } from './services/user.service';
 import { appInterceptorProvider } from './app.interceptor';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { TopTwitsComponent } from './top-twits/top-twits.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ProfileComponent,
     TwitAddComponent,
     TwitComponent,
-    TwitListComponent
+    TwitListComponent,
+    TopTwitsComponent
   ],
   imports: [
     BrowserModule,
