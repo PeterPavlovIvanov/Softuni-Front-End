@@ -1,6 +1,6 @@
-import { trigger, state, style, transition, animate } from '@angular/animations';
 import { AfterViewInit, Component, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
+import { fade } from '../animations/fadeAnimation';
 import { UserService } from '../services/user.service';
 
 @Component({
@@ -8,12 +8,7 @@ import { UserService } from '../services/user.service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
   animations:[
-    trigger('fade',[
-      state('void',style({opacity:0})),
-      transition(':enter, :leave', [ // void <=> *
-        animate(1000)
-      ])
-    ])
+    fade
   ]
 })
 export class LoginComponent implements AfterViewInit {

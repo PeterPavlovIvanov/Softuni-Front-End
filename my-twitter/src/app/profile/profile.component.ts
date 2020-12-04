@@ -1,7 +1,7 @@
-import { animate, state, style, transition, trigger } from '@angular/animations';
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
+import { fade } from '../animations/fadeAnimation';
 import { Twit } from '../interfaces/twit';
 import { User } from '../interfaces/user';
 import { UserService } from '../services/user.service';
@@ -11,12 +11,7 @@ import { UserService } from '../services/user.service';
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.css'],
   animations:[
-    trigger('fade',[
-      state('void',style({opacity:0})),
-      transition(':enter, :leave', [ // void <=> *
-        animate(1000)
-      ])
-    ])
+    fade
   ]
 })
 export class ProfileComponent implements OnInit {

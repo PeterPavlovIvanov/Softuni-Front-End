@@ -4,7 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { emailValidator, rePasswordValidatorFactory } from '../validators';
 import { User } from '../interfaces/user';
-import { trigger, state, style, transition, animate } from '@angular/animations';
+import { fade } from '../animations/fadeAnimation';
 
 
 @Component({
@@ -12,12 +12,7 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css'],
   animations:[
-    trigger('fade',[
-      state('void',style({opacity:0})),
-      transition(':enter, :leave', [ // void <=> *
-        animate(1000)
-      ])
-    ])
+    fade
   ]
 })
 export class RegisterComponent {
