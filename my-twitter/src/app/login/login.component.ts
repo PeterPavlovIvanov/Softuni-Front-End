@@ -1,3 +1,4 @@
+import { trigger, state, style, transition, animate } from '@angular/animations';
 import { AfterViewInit, Component, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
 import { UserService } from '../services/user.service';
@@ -5,7 +6,15 @@ import { UserService } from '../services/user.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.css'],
+  animations:[
+    trigger('fade',[
+      state('void',style({opacity:0})),
+      transition(':enter, :leave', [ // void <=> *
+        animate(1000)
+      ])
+    ])
+  ]
 })
 export class LoginComponent implements AfterViewInit {
   @ViewChild('f')

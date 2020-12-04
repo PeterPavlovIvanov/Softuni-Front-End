@@ -1,3 +1,4 @@
+import { animate, state, style, transition, trigger } from '@angular/animations';
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
@@ -8,7 +9,15 @@ import { UserService } from '../services/user.service';
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
-  styleUrls: ['./profile.component.css']
+  styleUrls: ['./profile.component.css'],
+  animations:[
+    trigger('fade',[
+      state('void',style({opacity:0})),
+      transition(':enter, :leave', [ // void <=> *
+        animate(1000)
+      ])
+    ])
+  ]
 })
 export class ProfileComponent implements OnInit {
 

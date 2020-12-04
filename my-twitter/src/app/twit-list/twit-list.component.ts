@@ -1,3 +1,4 @@
+import { animate, state, style, transition, trigger } from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Twit } from '../interfaces/twit';
@@ -7,7 +8,7 @@ import { UserService } from '../services/user.service';
 @Component({
   selector: 'app-twit-list',
   templateUrl: './twit-list.component.html',
-  styleUrls: ['./twit-list.component.css']
+  styleUrls: ['./twit-list.component.css'],
 })
 export class TwitListComponent implements OnInit {
 

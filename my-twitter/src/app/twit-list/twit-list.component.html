@@ -3,9 +3,6 @@
         <app-twit *ngFor="let twit of twitList" [twit]="twit"></app-twit>
         <div *ngIf="twitList.length === 0">No Twits!</div>
     </div>
-    <div *ngIf="!twitList || twitList.length === 0">
-        Loading...
-    </div>
     <div class="welcome" *ngIf="!isLogged">
         <p class="welcome title">WELCOME TO "MY TWITTER"</p>
         <p class="welcome extra">The place where life is twits.</p>

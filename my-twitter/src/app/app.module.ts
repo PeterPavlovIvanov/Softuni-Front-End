@@ -20,6 +20,7 @@ import { AngularFireModule } from '@angular/fire';
 import { storageServiceProvider } from './services/storage.service';
 import { UserService } from './services/user.service';
 import { appInterceptorProvider } from './app.interceptor';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -44,6 +45,7 @@ import { appInterceptorProvider } from './app.interceptor';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    BrowserAnimationsModule,
   ],
   providers: [
     storageServiceProvider,

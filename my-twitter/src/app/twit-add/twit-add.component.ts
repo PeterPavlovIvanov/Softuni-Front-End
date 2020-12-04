@@ -1,3 +1,4 @@
+import { trigger, state, style, transition, animate } from '@angular/animations';
 import { HttpClient } from '@angular/common/http';
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
@@ -9,7 +10,15 @@ import { UserService } from '../services/user.service';
 @Component({
   selector: 'app-twit-add',
   templateUrl: './twit-add.component.html',
-  styleUrls: ['./twit-add.component.css']
+  styleUrls: ['./twit-add.component.css'],
+  animations:[
+    trigger('fade',[
+      state('void',style({opacity:0})),
+      transition(':enter, :leave', [ // void <=> *
+        animate(1000)
+      ])
+    ])
+  ]
 })
 export class TwitAddComponent implements AfterViewInit {
   @ViewChild('f')

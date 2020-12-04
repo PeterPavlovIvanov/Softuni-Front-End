@@ -1,5 +1,5 @@
 <app-header></app-header>
-<div class="current-main-content">
+<div class="current-main-content" @fade>
     <fieldset>
         <legend>register</legend>
         <form [formGroup]="form" #f="ngForm" (ngSubmit)="onSubmit()">

@@ -1,9 +1,12 @@
 .current-main-content {
     display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
+    flex-direction: row;
+    align-content: flex-start;
+    align-items: flex-start;
+    justify-content: space-evenly;
+    padding: 10% 0 0;
 }
 
 fieldset {
-    margin: 10% 0 0;
+    margin: 0;
 }
