@@ -1,9 +1,11 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
+import { environment } from 'src/environments/environment';
 import { fade } from '../animations/fadeAnimation';
 import { Twit } from '../interfaces/twit';
 import { UserService } from '../services/user.service';
+const apiURL = environment.apiUrl;
 
 @Component({
   selector: 'app-top-twits',
@@ -26,7 +28,7 @@ export class TopTwitsComponent implements OnInit {
     this.isLogged = this.userService.isLogged;
 
 
-    this.http.get<Twit[]>('https://dark-twitter-fe5f2.firebaseio.com/twits.json')
+    this.http.get<Twit[]>(`${apiURL}/twits`)
       .subscribe(responseData => {
         for (const User in responseData) {
           this.currentMostLikedTwits.push(responseData[User]);
@@ -61,11 +63,3 @@ export class TopTwitsComponent implements OnInit {
   }
 
 }
-// else {
-//   if (a.usersLike.length > a.usersLike.length) {
-//     return 0;
-//   } else if (a.usersLike.length < b.usersLike.length) {
-//     return 1;
-//   }
-//   return -1;
-// }

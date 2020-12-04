@@ -1,8 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { environment } from 'src/environments/environment';
 import { User } from '../interfaces/user';
 import { StorageService } from './storage.service';
+const apiURL = environment.apiUrl;
 
 @Injectable()
 export class UserService {
@@ -20,7 +22,7 @@ export class UserService {
   login(user: User, passwordCorrect: any, usernameCorrect: any): void {
     let flag = false;
 
-    this.http.get<User[]>('https://dark-twitter-fe5f2.firebaseio.com/users.json')
+    this.http.get<User[]>(`${apiURL}/users`)
       .subscribe(responseData => {
         for (const User in responseData) {
           if (user.username == responseData[User].username) {

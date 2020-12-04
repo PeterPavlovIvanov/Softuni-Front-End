@@ -1,0 +1,7 @@
+POST  http://localhost:3000/twits
+Content-Type: application/json
+
+{
+  "text": "aaaaaaaaaaaaa",
+  "username": "bbbbbbbbbbbb"
+}

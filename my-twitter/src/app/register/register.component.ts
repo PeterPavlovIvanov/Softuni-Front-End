@@ -5,7 +5,9 @@ import { Router } from '@angular/router';
 import { emailValidator, rePasswordValidatorFactory } from '../validators';
 import { User } from '../interfaces/user';
 import { fade } from '../animations/fadeAnimation';
+import { environment } from 'src/environments/environment';
 
+const apiURL = environment.apiUrl;
 
 @Component({
   selector: 'app-register',
@@ -38,7 +40,7 @@ export class RegisterComponent {
     if (!this.form.controls.confirmPassword.errors && !this.form.controls.password.errors &&
       !this.form.controls.username.errors && !this.form.controls.email.errors) {
 
-      this.http.get<User[]>('https://dark-twitter-fe5f2.firebaseio.com/users.json')
+      this.http.get<User[]>(`${apiURL}/users`)
         .subscribe(responseData => {
           let isUsernameTaken = false;
           let isEmailTaken = false;
@@ -54,15 +56,11 @@ export class RegisterComponent {
             }
           }
           if (!isUsernameTaken && !isEmailTaken) {
-            this.http.post('https://dark-twitter-fe5f2.firebaseio.com/users.json', {
+            this.http.post(`${apiURL}/users`, {
               email: content.email,
               password: content.password,
               username: content.username,
-            })
-              .subscribe(responseData => {
-                //TODO: something maybe?
-                //console.log(responseData);
-              });
+            }).subscribe(console.log);
             this.router.navigate(["/user/login"]);
           } else {
             if (isUsernameTaken) {

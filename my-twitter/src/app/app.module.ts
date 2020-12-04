@@ -12,11 +12,7 @@ import { TwitAddComponent } from './twit-add/twit-add.component';
 import { TwitComponent } from './twit/twit.component';
 import { TwitListComponent } from './twit-list/twit-list.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { environment } from 'src/environments/environment';
-import { AngularFirestoreModule } from '@angular/fire/firestore';
-import { AngularFireAuthModule } from '@angular/fire/auth';
 import { HttpClientModule } from '@angular/common/http';
-import { AngularFireModule } from '@angular/fire';
 import { storageServiceProvider } from './services/storage.service';
 import { UserService } from './services/user.service';
 import { appInterceptorProvider } from './app.interceptor';
@@ -41,9 +37,6 @@ import { TopTwitsComponent } from './top-twits/top-twits.component';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    AngularFireModule.initializeApp(environment.firebaseConfig),
-    AngularFirestoreModule,
-    AngularFireAuthModule,
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,

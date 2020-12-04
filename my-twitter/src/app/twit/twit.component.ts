@@ -1,9 +1,11 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { environment } from 'src/environments/environment';
 import { Twit } from '../interfaces/twit';
 import { User } from '../interfaces/user';
 import { UserService } from '../services/user.service';
+const apiURL = environment.apiUrl;
 
 @Component({
   selector: 'app-twit',
@@ -24,7 +26,7 @@ export class TwitComponent implements OnInit {
   }
 
   openProfile() {
-    this.http.get<User[]>("https://dark-twitter-fe5f2.firebaseio.com/users.json")
+    this.http.get<User[]>(`${apiURL}/users`)
       .subscribe(responseData => {
         for (const User in responseData) {
           if (this.name === responseData[User].username) {
@@ -53,7 +55,7 @@ export class TwitComponent implements OnInit {
       currentTwit.usersLike.push(currentUsername);
     }
 
-    this.http.put(`https://dark-twitter-fe5f2.firebaseio.com/twits/${currentTwit.id}.json`
+    this.http.put(`${apiURL}/twits/${currentTwit._id}`
       , currentTwit)
       .subscribe(console.log);
   }
@@ -75,7 +77,7 @@ export class TwitComponent implements OnInit {
       currentTwit.usersDislike.push(currentUsername);
     }
 
-    this.http.put(`https://dark-twitter-fe5f2.firebaseio.com/twits/${currentTwit.id}.json`
+    this.http.put(`${apiURL}/twits/${currentTwit._id}`
       , currentTwit)
       .subscribe(console.log);
   }

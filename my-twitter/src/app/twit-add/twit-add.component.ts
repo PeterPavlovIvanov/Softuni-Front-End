@@ -2,10 +2,12 @@ import { HttpClient } from '@angular/common/http';
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { environment } from 'src/environments/environment';
 import { fade } from '../animations/fadeAnimation';
 import { Twit } from '../interfaces/twit';
 import { User } from '../interfaces/user';
 import { UserService } from '../services/user.service';
+const apiURL = environment.apiUrl;
 
 @Component({
   selector: 'app-twit-add',
@@ -29,7 +31,7 @@ export class TwitAddComponent implements AfterViewInit {
     });
   }
   ngAfterViewInit(): void {
-    this.http.get<User[]>('https://dark-twitter-fe5f2.firebaseio.com/users.json').subscribe(console.log);
+    this.http.get<User[]>(`${apiURL}/users`).subscribe(console.log);
   }
 
   onSubmit(): void {
@@ -41,7 +43,7 @@ export class TwitAddComponent implements AfterViewInit {
       usersDislike: [this.userService.user.username],
     };
     if (!this.form.controls.text.errors && this.userService.user !== undefined) {
-      this.http.post<Twit[]>('https://dark-twitter-fe5f2.firebaseio.com/twits.json', currentTwit)
+      this.http.post<Twit[]>(`${apiURL}/twits`, currentTwit)
         .subscribe();
 
       this.router.navigate(["/home"]);
