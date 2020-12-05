@@ -4,7 +4,6 @@ import { ActivatedRoute, Params } from '@angular/router';
 import { environment } from 'src/environments/environment';
 import { fade } from '../animations/fadeAnimation';
 import { Twit } from '../interfaces/twit';
-import { User } from '../interfaces/user';
 import { UserService } from '../services/user.service';
 
 const apiURL = environment.apiUrl;
@@ -32,38 +31,17 @@ export class ProfileComponent implements OnInit {
     this.route.params
       .subscribe(
         (params: Params) => {
-          this.userId = params['uid'];
+          this.username = params['username'];
         }
       );
-
-    this.http.get<User[]>(`${apiURL}/users`)
-      .subscribe(responseData => {
-        this.username = responseData[this.userId].username;
-        this.email = responseData[this.userId].email;
-        this.http.get<Twit[]>(`${apiURL}/twits`)
-          .subscribe(responseData2 => {
-            for (const Twit in responseData2) {
-              if (responseData2[Twit].username === this.username) {
-                this.currentTwits.push({ ...responseData2[Twit], id: Twit });
-              }
-            }
-          });
+    let ans;
+    this.http.get(`${apiURL}/users/${this.username}`)
+      .subscribe(resposneUser => {
+        ans = resposneUser;
+        this.username = ans.user.username;
+        this.email = ans.user.email;
+        this.currentTwits = ans.twits;
       });
-
-    // this.http.get<User[]>('dark-twitter-fe5f2.firebaseio.com/users.json')
-    //   .subscribe(responseData => {
-    //     this.username = responseData[this.userId].username;
-    //     this.email = responseData[this.userId].email;
-    //     this.http.get<Twit[]>('dark-twitter-fe5f2.firebaseio.com/twits.json')
-    //       .subscribe(responseData2 => {
-    //         for (const Twit in responseData2) {
-    //           if (responseData2[Twit].username === this.username) {
-    //             this.currentTwits.push({ ...responseData2[Twit], id: Twit });
-    //           }
-    //         }
-    //       });
-    //   });
-
   }
 
 }

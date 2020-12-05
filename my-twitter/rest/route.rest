@@ -5,3 +5,7 @@ Content-Type: application/json
   "text": "aaaaaaaaaaaaa",
   "username": "bbbbbbbbbbbb"
 }
+
+###
+
+GET http://localhost:3000/twits

@@ -11,6 +11,7 @@ import { UserService } from '../services/user.service';
 export class HeaderComponent implements OnInit {
 
   userId: string;
+  username: string;
 
   get isLogged(): boolean {
     return this.userService.isLogged;;
@@ -20,6 +21,7 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
     this.userId = this.userService.userId;
+    this.username = this.userService.user.username;
   }
 
   handleLogout(): void {

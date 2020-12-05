@@ -13,7 +13,7 @@ const apiURL = environment.apiUrl;
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css'],
-  animations:[
+  animations: [
     fade
   ]
 })
@@ -40,37 +40,14 @@ export class RegisterComponent {
     if (!this.form.controls.confirmPassword.errors && !this.form.controls.password.errors &&
       !this.form.controls.username.errors && !this.form.controls.email.errors) {
 
-      this.http.get<User[]>(`${apiURL}/users`)
-        .subscribe(responseData => {
-          let isUsernameTaken = false;
-          let isEmailTaken = false;
-          for (const User in responseData) {
-            if (this.form.controls.email.value == responseData[User].email) {
-              isEmailTaken = true;
-            }
-            if (this.form.controls.username.value == responseData[User].username) {
-              isUsernameTaken = true;
-            }
-            if (isEmailTaken && isUsernameTaken) {
-              break;
-            }
-          }
-          if (!isUsernameTaken && !isEmailTaken) {
-            this.http.post(`${apiURL}/users`, {
-              email: content.email,
-              password: content.password,
-              username: content.username,
-            }).subscribe(console.log);
-            this.router.navigate(["/user/login"]);
-          } else {
-            if (isUsernameTaken) {
-              alert("Username is taken.")
-            }
-            if (isEmailTaken) {
-              alert("Email is registered.")
-            }
-          }
-        });
+      let user: User = {
+        username: content.username,
+        email: content.email,
+        password: content.password,
+        twits: [],
+      }
+      this.http.post(`${apiURL}/users`, user).subscribe(console.log);
+      this.router.navigate(['/user/login']);
     } else {
       console.log("Form incorrect!")
       return;

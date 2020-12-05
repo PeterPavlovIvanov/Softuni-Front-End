@@ -34,7 +34,7 @@ export class TwitComponent implements OnInit {
             break;
           }
         }
-        this.router.navigate([`/user/${this.id}`]);
+        this.router.navigate([`/user/${this.name}`]);
       });
   }
 
