@@ -50,11 +50,14 @@ router.post("/", (req, res) => {
         .then(async(user) => {
             if (user) {
                 let errors = {};
-                if (user1.username === req.body.username) {
-                    errors.username = "User Name already exists";
-                } else {
-                    errors.email = "Email already exists";
+                console.log(user);
+                if (user.username === req.body.username) {
+                    errors.message = "User Name already exists";
                 }
+                if (user.email === req.body.email) {
+                    errors.message = "Email already exists";
+                }
+
                 return res.status(400).json(errors);
             } else {
                 try {
@@ -72,6 +75,33 @@ router.post("/", (req, res) => {
             });
         });
 });
+
+
+router.post("/login", async(req, res) => {
+    const { username, password } = req.body
+
+    User.findOne({ username })
+        .then(async(user) => {
+            if (user) {
+                if (user.password === password) {
+                    return res.status(200).json(user);
+                } else {
+                    return res.status(400).json({
+                        message: "Wrong Password",
+                    });
+                }
+            } else {
+                return res.status(400).json({
+                    message: "No Such User",
+                });
+            }
+        })
+        .catch((err) => {
+            return res.status(500).json({
+                message: err.message,
+            });
+        });
+})
 
 router.put("/:name", getUser, async(req, res) => {
     for (const attr in req.body) {

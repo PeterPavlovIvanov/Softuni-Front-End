@@ -15,7 +15,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { storageServiceProvider } from './services/storage.service';
 import { UserService } from './services/user.service';
-import { appInterceptorProvider } from './app.interceptor';
+//import { appInterceptorProvider } from './app.interceptor';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TopTwitsComponent } from './top-twits/top-twits.component';
 
@@ -31,7 +31,7 @@ import { TopTwitsComponent } from './top-twits/top-twits.component';
     TwitAddComponent,
     TwitComponent,
     TwitListComponent,
-    TopTwitsComponent
+    TopTwitsComponent,
   ],
   imports: [
     BrowserModule,
@@ -45,8 +45,8 @@ import { TopTwitsComponent } from './top-twits/top-twits.component';
   providers: [
     storageServiceProvider,
     UserService,
-    appInterceptorProvider,
+    //appInterceptorProvider,
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule { }

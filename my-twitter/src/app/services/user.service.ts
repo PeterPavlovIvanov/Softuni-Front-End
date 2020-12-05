@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
 import { User } from '../interfaces/user';
-import { StorageService } from './storage.service';
+import { storageFactory, StorageService } from './storage.service';
 const apiURL = environment.apiUrl;
 
 @Injectable()
@@ -19,36 +19,52 @@ export class UserService {
     this.userId = this.storage.getItem('userId');
   }
 
-  login(user: User, passwordCorrect: any, usernameCorrect: any): void {
-    let flag = false;
+  login(user: User, usernameCorrect: any, passwordCorrect: any): void {
 
-    this.http.get<User[]>(`${apiURL}/users`)
-      .subscribe(responseData => {
-        for (const User in responseData) {
-          if (user.username == responseData[User].username) {
-            if (user.password == responseData[User].password) {
-              this.user = responseData[User];
-              this.userId = User;
-              this.isLogged = true;
-              this.storage.setItem('isLogged', true);
-              this.storage.setItem('user', JSON.stringify(responseData[User]));
-              this.storage.setItem('userId', JSON.stringify(User));
-              this.router.navigate(["/home"]);
-              return;
-            } else {
-              flag = true;
-            }
+    this.http.post(`${apiURL}/users/login`, user)
+      .subscribe(res => {
+        let ans: any = res;
+        this.isLogged = true;
+        this.userId = ans._id;
+        this.storage.setItem('isLogged', true);
+        this.storage.setItem('user', JSON.stringify(ans));
+        this.storage.setItem('userId', ans._id);
+        this.router.navigate(["/home"]);
+
+        return;
+      },
+        err => {
+          if (err.error.message === "Wrong Password") {
+            alert("Wrong password!");
+          } else if (err.error.message === "No Such User") {
+            alert("No such username!");
           }
-        }
-      });
-    if (flag) {
-      console.log("Wrong username or password!");
-    }
+        });
+
+    // this.http.get<User[]>(`${apiURL}/users`)
+    //   .subscribe(responseData => {
+    //     for (const User in responseData) {
+    //       if (user.username == responseData[User].username) {
+    //         if (user.password == responseData[User].password) {
+    //           this.user = responseData[User];
+    //           this.userId = User;
+    //           this.isLogged = true;
+    //           this.storage.setItem('isLogged', true);
+    //           this.storage.setItem('user', JSON.stringify(responseData[User]));
+    //           this.storage.setItem('userId', JSON.stringify(User));
+    //           this.router.navigate(["/home"]);
+    //           return;
+    //         } 
+    //       }
+    //     }
+    //   });
   }
 
   logout(): void {
     this.user = null;
     this.isLogged = false;
+    this.userId = "";
     this.storage.setItem('isLogged', false);
+    this.storage.setItem('userId', "");
   }
 }

@@ -1,6 +1,4 @@
-import { HttpClient } from '@angular/common/http';
 import { AbstractControl, ValidationErrors, ValidatorFn } from '@angular/forms';
-import { User } from './interfaces/user';
 
 export function emailValidator(control: AbstractControl): ValidationErrors | null {
   const value = (control.value as string);

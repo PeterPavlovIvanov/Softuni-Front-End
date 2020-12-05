@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
@@ -17,7 +17,7 @@ const apiURL = environment.apiUrl;
     fade
   ]
 })
-export class RegisterComponent {
+export class RegisterComponent implements OnInit {
   @ViewChild('f')
   ngForm!: NgForm;
   form: FormGroup;
@@ -31,6 +31,8 @@ export class RegisterComponent {
       password: passwordControl,
       confirmPassword: ['test-password', [Validators.required, Validators.minLength(4), rePasswordValidatorFactory(passwordControl)]],
     });
+  }
+  ngOnInit(): void {
   }
 
 
@@ -46,8 +48,20 @@ export class RegisterComponent {
         password: content.password,
         twits: [],
       }
-      this.http.post(`${apiURL}/users`, user).subscribe(console.log);
-      this.router.navigate(['/user/login']);
+
+      this.http.post(`${apiURL}/users`, user)
+        .subscribe(
+          res => this.router.navigate(['/user/login']),
+          err => {
+            if (err.error.message == 'User Name already exists') {
+              alert(`Username ${user.username} is taken.`);
+            }
+            if (err.error.message == 'Email already exists') {
+              alert(`Email ${user.email} has a registration.`);
+            }
+          },
+        );
+
     } else {
       console.log("Form incorrect!")
       return;

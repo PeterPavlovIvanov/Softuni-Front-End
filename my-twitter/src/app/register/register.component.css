@@ -31,3 +31,11 @@ form {
     justify-content: flex-end;
     flex-wrap: wrap;
 }
+
+.constantMessageUsername {
+    color: rgb(230, 230, 6);
+}
+
+.constantMessageEmail {
+    color: rgb(230, 230, 6);
+}
