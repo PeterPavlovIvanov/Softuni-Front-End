@@ -1,6 +1,6 @@
-import { animate, state, style, transition, trigger } from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { fade } from '../animations/fadeAnimation';
 import { Twit } from '../interfaces/twit';
 import { TwitService } from '../services/twit.service';
 import { UserService } from '../services/user.service';
@@ -9,6 +9,9 @@ import { UserService } from '../services/user.service';
   selector: 'app-twit-list',
   templateUrl: './twit-list.component.html',
   styleUrls: ['./twit-list.component.css'],
+  animations:[
+    fade
+  ]
 })
 export class TwitListComponent implements OnInit {
 

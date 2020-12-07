@@ -1,4 +1,4 @@
-<div class="container current-main-content">
+<div class="container current-main-content" @fade>
     <div *ngIf="twitList && isLogged">
         <app-twit *ngFor="let twit of twitList" [twit]="twit"></app-twit>
         <div *ngIf="twitList.length === 0">No Twits!</div>
