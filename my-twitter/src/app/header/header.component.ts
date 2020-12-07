@@ -11,21 +11,26 @@ import { UserService } from '../services/user.service';
 export class HeaderComponent implements OnInit {
 
   userId: string;
-  username: string;
+  currentUsername: string;
+  isInProfile: boolean;
 
   get isLogged(): boolean {
-    return this.userService.isLogged;;
+    return this.userService.isLogged;
   }
 
-  constructor(private userService: UserService, private router: Router) { }
+  constructor(private userService: UserService, private router: Router,) {
+  }
 
   ngOnInit(): void {
     this.userId = this.userService.userId;
-    this.username = this.userService.user.username;
+    let temp: User = this.userService.storage.getItem("user");
+    this.currentUsername = temp.username;
+    this.isInProfile = window.location.href.includes('/user/profile/') ? true : false;
   }
 
   handleLogout(): void {
     this.userService.logout();
     this.router.navigate(['/home']);
   }
+
 }

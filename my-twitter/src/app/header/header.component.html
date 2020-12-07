@@ -3,9 +3,9 @@
         <li>
             <a href="#" [routerLink]="['/home']">Home</a>
         </li>
-        <li *ngIf="isLogged">
+        <li *ngIf="isLogged && !isInProfile">
             <!-- TODO -->
-            <a href="#" routerLink="/user/{{username}}">Profile</a>
+            <a href="#" routerLink="/user/profile/{{currentUsername}}">Profile</a>
         </li>
         <li *ngIf="isLogged">
             <a href="#" [routerLink]="['/twits/top']">Top Twits</a>

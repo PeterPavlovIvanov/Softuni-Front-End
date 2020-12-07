@@ -23,14 +23,15 @@ export class UserService {
 
     this.http.post(`${apiURL}/users/login`, user)
       .subscribe(res => {
-        let ans: any = res;
+        let temp: any = res;
         this.isLogged = true;
-        this.userId = ans._id;
-        this.storage.setItem('isLogged', true);
-        this.storage.setItem('user', JSON.stringify(ans));
-        this.storage.setItem('userId', ans._id);
-        this.router.navigate(["/home"]);
+        this.userId = temp._id;
 
+        this.storage.setItem('isLogged', true);
+        this.storage.setItem('user', JSON.stringify(temp));
+        this.storage.setItem('userId', temp._id);
+
+        this.router.navigate(["/home"]);
         return;
       },
         err => {
@@ -41,23 +42,6 @@ export class UserService {
           }
         });
 
-    // this.http.get<User[]>(`${apiURL}/users`)
-    //   .subscribe(responseData => {
-    //     for (const User in responseData) {
-    //       if (user.username == responseData[User].username) {
-    //         if (user.password == responseData[User].password) {
-    //           this.user = responseData[User];
-    //           this.userId = User;
-    //           this.isLogged = true;
-    //           this.storage.setItem('isLogged', true);
-    //           this.storage.setItem('user', JSON.stringify(responseData[User]));
-    //           this.storage.setItem('userId', JSON.stringify(User));
-    //           this.router.navigate(["/home"]);
-    //           return;
-    //         } 
-    //       }
-    //     }
-    //   });
   }
 
   logout(): void {
@@ -66,5 +50,6 @@ export class UserService {
     this.userId = "";
     this.storage.setItem('isLogged', false);
     this.storage.setItem('userId', "");
+    this.storage.setItem('user', {username:""});
   }
 }
