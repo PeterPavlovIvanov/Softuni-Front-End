@@ -26,7 +26,7 @@ The project is created with:
 $ npm install
 $ npm install -g @angular/cli 
 $ ng s
-Go to the rest folder and run this command:
+$ cd rest
 $ npm run devStart
 ```
 
