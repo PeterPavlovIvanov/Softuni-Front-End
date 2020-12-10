@@ -22,11 +22,13 @@ The project is created with:
 * JavaScript
 
 ## Setup
+```
 $ npm install
 $ npm install -g @angular/cli 
 $ ng s
 Go to the rest folder and run this command:
 $ npm run devStart
+```
 
 ## Development server
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
