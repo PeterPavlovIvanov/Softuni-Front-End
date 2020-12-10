@@ -11,7 +11,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 * [Further help](#further-help)
 
 ## General info
-This is a project defense at SoftUni for the course Front-End. It is an app about posting, reading and liking twits. It has a dark theme.
+This is a project defense at SoftUni for the course Front-End Angular - November 2020. It is an app about posting, reading and liking twits. It has a dark theme.
 
 ## Technologies
 Project is created with:
