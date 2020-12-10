@@ -14,7 +14,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 This is a project defense at SoftUni for the course Front-End Angular - November 2020. It is an app about posting, reading and liking twits.
 
 ## Technologies
-Project is created with:
+The project is created with:
 * Angular CLI: 11.0.2
 * Node: 14.15.1
 * rxjs: 6.6.3
