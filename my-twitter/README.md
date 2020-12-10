@@ -3,7 +3,7 @@
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.0.2.
 
 ## Table of contents
-* [Development setver](#development-server)
+* [Development server](#development-server)
 * [Code scaffolding](#code-scaffolding)
 * [Build](#build)
 * [Further help](#further-help)
