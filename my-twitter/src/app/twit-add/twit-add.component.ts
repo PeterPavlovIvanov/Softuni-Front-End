@@ -35,20 +35,21 @@ export class TwitAddComponent implements AfterViewInit {
   }
 
   onSubmit(): void {
+     let user: User = this.userService.storage.getItem("user");
     const content = this.ngForm.value;
     let currentTwit = {
       text: content.text,
-      username: this.userService.user.username,
-      usersLike: [this.userService.user.username],
-      usersDislike: [this.userService.user.username],
+      username: user.username,
+      usersLike: [user.username],
+      usersDislike: [user.username],
     };
-    if (!this.form.controls.text.errors && this.userService.user !== undefined) {
+    console.log(currentTwit);
+    if (!this.form.controls.text.errors && user !== undefined) {
       this.http.post<Twit[]>(`${apiURL}/twits`, currentTwit)
         .subscribe();
 
       this.router.navigate(["/home"]);
     } else {
-      //TODO:
       console.log("Form incorrect!")
       return;
     }

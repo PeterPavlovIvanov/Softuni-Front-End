@@ -39,7 +39,8 @@ export class TwitComponent implements OnInit {
   }
 
   like(currentTwit: any) {
-    let currentUsername = this.userService.user.username;
+    let userFromService: User = this.userService.storage.getItem("user");
+    let currentUsername = userFromService.username;
     if (currentUsername == currentTwit.username) {
       return;
     }
@@ -53,15 +54,18 @@ export class TwitComponent implements OnInit {
 
     if (!currentTwit.usersLike.some(username => username === currentUsername)) {
       currentTwit.usersLike.push(currentUsername);
+    }else{
+      currentTwit.usersLike = currentTwit.usersLike.filter((username) => username != currentUsername);
     }
 
-    this.http.put(`${apiURL}/twits/${currentTwit._id}`
-      , currentTwit)
+    this.http.post(`${apiURL}/twits/likeChange/${currentTwit._id}`
+      , { username: currentUsername })
       .subscribe(console.log);
   }
 
   dislike(currentTwit: any) {
-    let currentUsername = this.userService.user.username;
+    let userFromService: User = this.userService.storage.getItem("user");
+    let currentUsername = userFromService.username;
     if (currentUsername == currentTwit.username) {
       return;
     }
@@ -75,10 +79,12 @@ export class TwitComponent implements OnInit {
 
     if (!currentTwit.usersDislike.some(username => username === currentUsername)) {
       currentTwit.usersDislike.push(currentUsername);
+    }else{
+      currentTwit.usersDislike = currentTwit.usersDislike.filter((username) => username != currentUsername);
     }
 
-    this.http.put(`${apiURL}/twits/${currentTwit._id}`
-      , currentTwit)
+    this.http.post(`${apiURL}/twits/dislikeChange/${currentTwit._id}`
+      , { username: currentUsername })
       .subscribe(console.log);
   }
 

@@ -3,7 +3,7 @@ const Twit = require("../models/twit");
 const User = require("../models/user");
 const router = express.Router();
 
-const getTwit = async(req, res, next) => {
+const getTwit = async (req, res, next) => {
     let twit;
     try {
         twit = await Twit.findById(req.params.id);
@@ -18,7 +18,7 @@ const getTwit = async(req, res, next) => {
     next();
 };
 
-router.get("/", async(req, res) => {
+router.get("/", async (req, res) => {
     try {
         const twit = await Twit.find();
         res.json(twit);
@@ -27,14 +27,14 @@ router.get("/", async(req, res) => {
     }
 });
 
-router.get("/:id", getTwit, async(req, res) => {
+router.get("/:id", getTwit, async (req, res) => {
     res.send(res.twit);
 });
 
-router.post("/", async(req, res) => {
-    const twit = new Twit({...req.body });
+router.post("/", async (req, res) => {
+    const twit = new Twit({ ...req.body });
 
-    User.exists({ username: req.body.username }, async(err, doc) => {
+    User.exists({ username: req.body.username }, async (err, doc) => {
         if (err) {
             res.status(400).json({ message: err.message });
         } else {
@@ -42,8 +42,8 @@ router.post("/", async(req, res) => {
                 try {
                     const newTwit = await twit.save();
                     User.updateOne({ username: newTwit.username }, {
-                            $addToSet: { twits: newTwit._id },
-                        },
+                        $addToSet: { twits: newTwit._id },
+                    },
                         (error, success) => {
                             if (error) {
                                 console.log(error);
@@ -61,13 +61,56 @@ router.post("/", async(req, res) => {
     });
 });
 
-router.put("/:id", getTwit, async(req, res) => {
-    for (const attr in req.body) {
-        res.twit[attr] = req.body[attr];
-    }
+router.post("/dislikeChange/:id", getTwit, async (req, res) => {
     try {
-        const updatedTwit = await res.twit.save();
-        res.json(updatedTwit);
+        const username = req.body.username;
+        let payload = res.twit.usersDislike.some(userWhoHasLiked => userWhoHasLiked === username) ?
+            {
+                $pull: { usersDislike: username }
+            } : {
+                $addToSet: { usersDislike: username },
+                $pull: { usersLike: username }
+            }
+        Twit.updateOne(
+            { 
+                _id: req.params.id
+            
+            },payload,
+            (error, success) => {
+                if (error) {
+                    res.status(400).json({ message: error.message })
+                }
+            }
+        );
+        res.status(200)
+    } catch (err) {
+        res.status(400).json({ message: err.message });
+    }
+});
+
+
+router.post("/likeChange/:id", getTwit, async (req, res) => {
+    try {
+        const username = req.body.username;
+        let payload = res.twit.usersLike.some(userWhoHasLiked => userWhoHasLiked === username) ?
+            {
+                $pull: { usersLike: username }
+            } : {
+                $addToSet: { usersLike: username },
+                $pull: { usersDislike: username }
+            }
+        Twit.updateOne(
+            { 
+                _id: req.params.id
+            
+            },payload,
+            (error, success) => {
+                if (error) {
+                    res.status(400).json({ message: error.message })
+                }
+            }
+        );
+        res.status(200)
     } catch (err) {
         res.status(400).json({ message: err.message });
     }

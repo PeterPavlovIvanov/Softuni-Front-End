@@ -1,4 +1,4 @@
-POST  http://localhost:3000/twits
+POST  http://localhost:3000/twits/likeChange/5fd3a01ce806ec2e101da937
 Content-Type: application/json
 
 {
@@ -6,6 +6,6 @@ Content-Type: application/json
   "username": "bbbbbbbbbbbb"
 }
 
-###
+# ###
 
-GET http://localhost:3000/twits
+# GET http://localhost:3000/twits

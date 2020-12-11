@@ -26,7 +26,7 @@ export class UserService {
         let temp: any = res;
         this.isLogged = true;
         this.userId = temp._id;
-
+        console.log(temp);
         this.storage.setItem('isLogged', true);
         this.storage.setItem('user', JSON.stringify(temp));
         this.storage.setItem('userId', temp._id);
@@ -50,6 +50,6 @@ export class UserService {
     this.userId = "";
     this.storage.setItem('isLogged', false);
     this.storage.setItem('userId', "");
-    this.storage.setItem('user', {username:""});
+    this.storage.setItem('user', { username: "" });
   }
 }
