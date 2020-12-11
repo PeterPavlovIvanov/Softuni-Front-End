@@ -20,6 +20,8 @@ The project is created with:
 * rxjs: 6.6.3
 * typescript: 4.0.5
 * JavaScript
+* MongoDB
+* Express
 
 ## Setup
 ```
