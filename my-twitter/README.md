@@ -27,9 +27,11 @@ The project is created with:
 ```
 $ npm install
 $ npm install -g @angular/cli 
-$ ng s
 $ cd rest
+$ npm install
 $ npm run devStart
+$ cd..
+$ ng s
 ```
 
 ## Development server
