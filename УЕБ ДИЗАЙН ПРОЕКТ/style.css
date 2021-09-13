@@ -1,0 +1,75 @@
+
+body {
+    margin: 0;
+    background: url("/images/background.png"), #C1BCD4;
+    background-position: 0px 50px;
+}
+  
+h1 {
+    color: navy;
+    margin-left: 20px;
+}
+
+ul {
+    display: inline;
+    list-style-type: none;
+    position: center;
+    border: none;
+    box-shadow: 5px 5px 8px grey;
+}
+
+a{
+    text-decoration: none;
+    color: #5E4A44;
+    font-size: 28;
+    font-weight: normal;
+    font-weight: bold;
+    font-weight: 900;
+    font-size: large;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+a:hover{
+    color:  #8d7a75;
+}
+
+.menu-bar {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    align-content: flex-start;
+    align-items: center;
+    padding: 1% 0;
+    margin: 0;
+    background-color: #C1BCD4;
+}
+
+#main
+{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-content: center;
+    align-items: center;  
+    margin-top: 5%;
+}
+
+#main .element-post{
+    border: 0.01cm;
+    border-style: solid;
+    border-color: rgb(102, 102, 102);  
+    border-radius: 2%;
+    box-shadow: 0px 0px 13px 3px grey;
+    padding: 0% 2%;
+    background-color: #EADDE8;
+    opacity: 0.8;
+    margin: 2%;
+    width: 300px;
+}
+
+#main .element-post:hover{
+    background-color: #f3e8f1;
+    opacity: 0.9;
+}

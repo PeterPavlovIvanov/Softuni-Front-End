@@ -1,0 +1,7 @@
+POST http://localhost:3000/root
+content-type: application/json
+
+{
+    "ingredients": "sustavki test 2",
+    "recipe": "test recipe 2"
+}
