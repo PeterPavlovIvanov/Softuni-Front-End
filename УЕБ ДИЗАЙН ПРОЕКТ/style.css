@@ -13,9 +13,13 @@ h1 {
 ul {
     display: inline;
     list-style-type: none;
-    position: center;
     border: none;
     box-shadow: 5px 5px 8px grey;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 5;
 }
 
 a{
