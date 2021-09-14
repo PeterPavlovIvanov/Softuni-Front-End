@@ -1,43 +1,4 @@
 const main = document.getElementById("main")
-const arr = [
-    {
-        id: "123123asdf",
-        author: "Pesho",
-        ingredients: "mlqko, qica, bob, 2x supeni lujici zahar",
-        recipe: "long text",
-    },
-    {
-        
-        author: "Pesho",
-        imageSource: "Image source",
-        ingredients: "text",
-        recipe: "long text",
-    },
-    {
-        author: "Author name",
-        imageSource: "Image source",
-        ingredients: "Text",
-        recipe: "Long text",
-    },
-    {
-        author: "Author name",
-        imageSource: "Image source",
-        ingredients: "Text",
-        recipe: "Long text",
-    },
-    {
-        author: "Author name",
-        imageSource: "Image source",
-        ingredients: "Text",
-        recipe: "Long text",
-    },
-    {
-        author: "Author name",
-        imageSource: "Image source",
-        ingredients: "Text",
-        recipe: "Long text",
-    }
-]
 
 const getRecepti = (username) => {
     const recepti = {}
@@ -69,13 +30,22 @@ const postRecepti = (username) => {
     return recepti
 }
 
+const fetchAsync = async (url) => {
+    let response = await fetch(url);
+    let data = await response.json();
+    return data;
+}
+
+const getUrl = (URI) => `http://127.0.0.1:3000/${URI}`
+
 const stringHtmlBuilder = ({author, imageSource, ingredients, recipe}) => {
     return `<div class="element-post">
         <p>author: ${author}</p>
-        <p>imageSource: ${imageSource}</p>
         <p>ingredients: ${ingredients}</p>
         <p>recipe: ${recipe}</p>
     </div>`
 }
 
-main.innerHTML = arr.map(stringHtmlBuilder).join(" ")
+fetchAsync(getUrl("logged")).then(receivedData => {
+    main.innerHTML = receivedData.map(stringHtmlBuilder).join(" ")
+})

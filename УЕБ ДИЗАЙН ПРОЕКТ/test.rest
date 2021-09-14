@@ -1,7 +1,17 @@
-POST http://localhost:3000/root
+GET http://127.0.0.1:3000/logged
 content-type: application/json
 
-{
-    "ingredients": "sustavki test 2",
-    "recipe": "test recipe 2"
-}
+# {
+#     "ingredients" : "domati, krastavici",
+#     "recipe": "test recipe 22"
+# }
+
+# {
+#     "username": "root vtori",
+#     "password": "1234"
+# }
+
+# {
+#     "ingredients": "sustavki test 4",
+#     "recipe": "test recipe 4"
+# }

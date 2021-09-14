@@ -12,6 +12,28 @@ router.get("/", async (req, res) => {
     }
 });
 
+router.get("/logged", async(req, res) => {
+    try {
+        let usersArray = await User.find();
+        if (usersArray == null) {
+            return res.status(201).json({ message: "Няма рецепти." });
+        }
+        let resultRecepti = [];
+
+        for(let i = 0; i < usersArray.length; i++)
+        {
+            for(let j = 0; j < usersArray[i].recepti.length; j++)
+            {
+                resultRecepti.push({...usersArray[i].recepti[j], author: usersArray[i].username});
+            }
+        }
+
+        res.status(201).json(resultRecepti);
+    } catch (err) {
+        return res.status(500).json({ message: err.message });
+    }
+});
+
 router.get("/:username", async(req, res) => {
     try {
         let user = await User.findOne({ username: req.params.username })
