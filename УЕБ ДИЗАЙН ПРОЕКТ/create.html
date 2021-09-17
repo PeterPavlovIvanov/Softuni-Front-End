@@ -15,17 +15,20 @@
         <li><a href="logout.html">Изход</a></li>
     </ul>
  
-    <from id="post-recipe">
-        <label for="ingredients">Съставки</label>
-        <input type="text">
+    <from id="post-recipe" class="c-form">
 
-        <label for="recipe">Рецепта</label>
-        <input type="text">
+        <div class="input-container">
+            <input class="form-input" type="text" placeholder="Съставки">
+        </div>
 
-        <label for="picture">Снимка</label>
-        <input type="file">
+        <div class="input-container">
+            <input class="form-input" type="text" placeholder="Рецепта">
+        </div>
 
-        <input type="submit">
+        <div class="input-container file-submit">
+            <input class="form-input" type="file">
+            <input class="form-button" type="submit">
+        </div>
     </from>
 
 </body>
