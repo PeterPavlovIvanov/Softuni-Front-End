@@ -6,6 +6,10 @@ const mongo_uri = "mongodb+srv://root:1234@cluster0.4sj5a.mongodb.net/users?retr
 
 app.use(cors())
 
+var bodyParser = require('body-parser');
+app.use(bodyParser.json({limit: '50mb'}));
+app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
+
 mongoose.connect(mongo_uri, {
     useNewUrlParser: true,
     useCreateIndex: true,

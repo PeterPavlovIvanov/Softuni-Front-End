@@ -99,16 +99,15 @@ router.post("/login", async(req, res) => {
 })
 
 router.post("/:username", async (req, res) => {
-    const { ingredients, recipe } = req.body
+    const { ingredients, recipe, img } = req.body
     const username = req.params.username
-    console.log([ingredients, recipe])
     try {
         User.updateOne({ username }, {
-            $push: { recepti: { ingredients, recipe } },
+            $push: { recepti: { ingredients, recipe, img } },
         },
         (error, success) => {
             if (error) {
-                res.status(400).json({ message: error.message })
+                return res.status(400).json({ message: error.message })
             }
         });
         res.status(201).json({ ingredients, recipe });

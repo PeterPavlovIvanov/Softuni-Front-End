@@ -1,10 +1,12 @@
+*{
+    font-family: 'Courier New', Courier, monospace;
+}
 
 body {
     margin: 0;
-    background-image: linear-gradient(to bottom right, #f7e7e7, #af8b8b, #775f5f);
-    background-image: linear-gradient(to bottom right, #f7e7e7bb, #af8b8bc4, #775f5f);
-
+    background-image: linear-gradient(to bottom right, white, rgb(238, 242, 255), rgb(217, 218, 255));
     background-position: 0px 50px;
+    background-color: white;
 }
   
 h1 {
@@ -16,7 +18,7 @@ ul {
     display: inline;
     list-style-type: none;
     border: none;
-    box-shadow: 5px 5px 8px grey;
+    box-shadow: 0px 0px 17px 1px grey;
     position: fixed;
     top: 0;
     left: 0;
@@ -24,20 +26,41 @@ ul {
     z-index: 5;
 }
 
-a{
+ul li a{
+    width: 70px;
+    overflow: hidden;
+    white-space: nowrap;
     text-decoration: none;
-    color: #5E4A44;
+    /* color: #5E4A44; */
+    color: white;
     font-size: 28;
     font-weight: normal;
     font-weight: bold;
     font-weight: 900;
     font-size: large;
-    font-family: 'Courier New', Courier, monospace;
+    padding: 0 25%;
+    position: relative;
 }
 
 a:hover{
-    color:  #8d7a75;
-    border-bottom: 1px solid black;
+    transition: all ease-in-out .2s;
+    text-shadow: 0px 0px 15px white;
+}
+
+a:after {
+    transition: all ease-in-out .2s;
+    background: none repeat scroll 0 0 white;
+    content: "";
+    display: block;
+    height: 2px;
+    width: 0;
+    position: absolute;
+    left: 50%;
+}
+
+a:hover:after {
+    width: 100%;
+    left: 0;
 }
 
 .menu-bar {
@@ -49,8 +72,9 @@ a:hover{
     align-items: center;
     padding: 1% 0;
     margin: 0;
-    /*background-color: #C1BCD4;*/
-    background-color: #E3E0CF;
+    /* background-color: #C1BCD4;
+    background-color: #E3E0CF; */
+    background-color: lightblue;
 }
 
 #main
@@ -65,36 +89,45 @@ a:hover{
 }
 
 .element-post, .post-recipe{
-    border: 0.01cm;
-    border-style: solid;
-    border-radius: 2%;
-    box-shadow: 0px 0px 13px 3px grey;
-    padding: 0% 2%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-content: center;
+    align-items: stretch;
+    border-radius: 6px;
+    box-shadow: 0px 0px 17px 1px grey;
+    padding: 2% 0%;
     background-color: #e3e3e33b;
     opacity: 0.8;
     margin: 2%;
-    width: 300px;
+    width: 700px;
 }
 
-#main .element-post:hover, .c-form:hover{
+.element-post p{
+    margin: 0% 5%;
+}
+
+.element-post img{
+    margin: 3% 0;
+}
+
+#main .element-post:hover, .c-form:hover, .home-about:hover{
     background-color: #f6f6f87a;
-    opacity: 0.9;
+    opacity: 0.8;
 }
 
 .c-form{
     display: flex;
     flex-direction: column;
     flex-wrap: nowrap;
-    justify-content: space-around;
+    justify-content: space-between;
     align-content: center;
-    align-items: flex-end;
-    border: 0.01cm;
-    border-style: solid;
-    border-color: rgb(102, 102, 102);  
-    border-radius: 2%;
-    margin: 30% 20%;
+    align-items: center;
+    border-radius: 6px;
+    margin: 10% 20% 20% 20%;
     padding: 2%;
-    box-shadow: 0px 0px 13px 3px grey;
+    box-shadow: 0px 0px 17px 1px grey;
 }
 
 .form-input{
@@ -109,7 +142,7 @@ a:hover{
 .input-container{
     border:0;
     background:transparent;
-    width:100%;
+    width:90%;
     padding:8px 0 5px 0;
     font-size:16px;
     color:#5E4A44;
@@ -118,7 +151,7 @@ a:hover{
 .input-container input:focus{ 
     border:none;	
     outline:none;
-    border-bottom: 1px solid #e74c3c;	
+    border-bottom: 1px solid #ff0000;	
 }
 
 .form-button{
@@ -129,19 +162,35 @@ a:hover{
     color: #fff;
 	padding:10px 20px;
 	text-transform:uppercase;
-	margin-top:50px;
 	border-radius:2px;
 	cursor:pointer;
-	position:relative;
 }
 
 .file-submit{
-    min-width: 0px;    
-    max-width: 30%;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     flex-wrap: nowrap;
-    justify-content: space-around;
-    align-content: center;
+    align-items: flex-end;
+}
+
+.home-about{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-content: space-between;
     align-items: center;
+    width:40%;
+    margin: 5% 28% 10% 28%;
+    box-shadow: 0px 0px 17px 1px grey;
+    padding: 2% 0;
+    border-radius: 6px;
+}
+
+.home-about img{
+    width: 100%;
+}
+
+.home-about p{
+    margin: 5%;
 }

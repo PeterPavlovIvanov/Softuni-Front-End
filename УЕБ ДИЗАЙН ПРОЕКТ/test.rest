@@ -1,15 +1,17 @@
-GET http://127.0.0.1:3000/logged
+POST http://127.0.0.1:3000/signup
 content-type: application/json
 
 # {
+#     "author": "root vtori",
 #     "ingredients" : "domati, krastavici",
-#     "recipe": "test recipe 22"
+#     "recipe": "test recipe 22",
+#     "image": ""
 # }
 
-# {
-#     "username": "root vtori",
-#     "password": "1234"
-# }
+{
+    "username": "root vtori",
+    "password": "1234"
+}
 
 # {
 #     "ingredients": "sustavki test 4",

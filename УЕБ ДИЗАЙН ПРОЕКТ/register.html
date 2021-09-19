@@ -13,17 +13,23 @@
         <li><a href="home.html">Меденки</a></li>
         <li><a href="login.html">Влез</a></li>
     </ul>
-    
-    <form id="register">
-        <label for="username">име</label>
-        <input type="text">
-        
-        <label for="password">парола</label>
-        <input type="password">
-
-        <input type="submit">
-    </form>
  
+    <form id="register" class="c-form">
+
+        <div class="input-container">
+            <input class="form-input" name="username" type="text" placeholder="Име">
+        </div>
+
+        <div class="input-container">
+            <input class="form-input" name="password" type="password" placeholder="Парола">
+        </div>
+
+        <div class="input-container file-submit">
+            <input class="form-button" type="submit">
+        </div>
+        
+    </form>
+
 </body>
 <script src="main.js"></script>
 </html>

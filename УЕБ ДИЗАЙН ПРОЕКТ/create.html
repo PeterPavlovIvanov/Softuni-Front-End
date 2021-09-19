@@ -10,26 +10,26 @@
 <body>
 
     <ul class="menu-bar">
-        <li><a href="logged.html">Меденки</a></li>
-        <li><a href="account.html">Акаунт</a></li>
-        <li><a href="logout.html">Изход</a></li>
+        <li><a href="logged.html">Меденки</a></li>        
+        <li><a href="account.html" id="username">Акаунт</a></li>
+        <li><a id="exit">Изход</a></li>
     </ul>
  
-    <from id="post-recipe" class="c-form">
+    <form id="post-recipe" class="c-form">
 
         <div class="input-container">
-            <input class="form-input" type="text" placeholder="Съставки">
+            <input class="form-input" name="ingredients" type="text" minlength="10" placeholder="Съставки" required>
         </div>
 
         <div class="input-container">
-            <input class="form-input" type="text" placeholder="Рецепта">
+            <input class="form-input" name="recipe" type="text" minlength="10" placeholder="Рецепта" required>
         </div>
 
         <div class="input-container file-submit">
-            <input class="form-input" type="file">
+            <input class="form-input file" name="image" minlength="1" type="file" required>
             <input class="form-button" type="submit">
         </div>
-    </from>
+    </form>
 
 </body>
 <script src="main.js"></script>
