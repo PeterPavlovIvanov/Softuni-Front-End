@@ -4,6 +4,7 @@ const exitButton = document.getElementById("exit")
 const accButton = document.getElementById("username")
 const loginForm = document.getElementById("login")
 const registerForm = document.getElementById("register")
+const accRepices = document.getElementById("account-repices")
 const localStorageName = "medenkiIme"
 
 const postFetch = async (url, data) => {
@@ -29,12 +30,19 @@ const getUrlServer = (URI) => `http://127.0.0.1:3000/${URI}`
 
 const getUrlClient = (URI) => `http://127.0.0.1:5500/${URI}`
 
-const stringHtmlBuilder = ({author, imageSource, ingredients, recipe, img}) => {
-    return `<div class="element-post">
-        <p>author: ${author}</p>
-        <img src=${img} />
-        <p>ingredients: ${ingredients}</p>
-        <p>recipe: ${recipe}</p>
+const stringHtmlBuilder = ({author, ingredients, recipe, img}) => {
+    return `
+    <div class="card" onClick="window.location.href='/account.html?id=${author}'">
+        <div class="card-inner">    
+            <div class="card-front"> 
+                <img src="${img}"/> 
+            </div>
+            <div class="card-back">
+                <p><b><u>Автор:</u></b> ${author}</p>
+                <p><b><u>Съставки:</u></b> ${ingredients}</p>
+                <p><b><u>Рецепта:</u></b> ${recipe}</p>
+            </div>
+        </div>
     </div>`
 }
 
@@ -42,10 +50,27 @@ if(localStorage.getItem(localStorageName) == null) {
     let isNLogin = window.location.href != getUrlClient("login.html")
     let isNRegister = window.location.href != getUrlClient("register.html")
     let isNHome = window.location.href != getUrlClient("home.html")
-    if(isNLogin && isNRegister && isNHome) {
+    let isNAccount = window.location.href != getUrlClient("account.html") 
+    if(isNLogin && isNRegister && isNHome && isNAccount) {
         window.location.href = getUrlClient("login.html")
     }
     
+}
+
+if(accRepices) {
+    let id;
+    if(window.location.search == "") {
+        id = localStorage.getItem(localStorageName)
+    } else {
+        id = window.location.search.replace("?id=", "")
+    }
+    fetchAsync(id).then(receivedData => {
+        console.log(receivedData)
+        receivedData.recepti = receivedData.recepti.map(curRecipe => {
+            return {...curRecipe, author: receivedData.username}
+        })
+        accRepices.innerHTML = receivedData.recepti.map(stringHtmlBuilder).join(" ")
+    })
 }
 
 if(accButton) {

@@ -1,4 +1,4 @@
-POST http://127.0.0.1:3000/signup
+GET http://127.0.0.1:3000/account
 content-type: application/json
 
 # {
@@ -8,10 +8,10 @@ content-type: application/json
 #     "image": ""
 # }
 
-{
-    "username": "root vtori",
-    "password": "1234"
-}
+# {
+#     "username": "root vtori",
+#     "password": "1234"
+# }
 
 # {
 #     "ingredients": "sustavki test 4",
