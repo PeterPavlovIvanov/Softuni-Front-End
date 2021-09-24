@@ -1,0 +1,44 @@
+
+#main, #account-repices
+{
+    /* display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-content: center;
+    align-items: center;   */
+    margin-top: 5%;
+}
+
+.element-post, .post-recipe{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-content: center;
+    align-items: stretch;
+    border-radius: 6px;
+    box-shadow: 0px 0px 17px 1px grey;
+    padding: 2% 0%;
+    background-color: #e3e3e33b;
+    opacity: 0.8;
+    margin: 2%;
+    width: 30%;
+    cursor: pointer;
+}
+
+.element-post p{
+    margin: 0% 5%;
+}
+
+.element-post img{
+    margin: 3% 0;
+}
+
+.element-post img:hover{
+    opacity: 0.8;
+}
+
+#main .element-post:hover, .c-form:hover, .home-about:hover{
+    background-color: #d2d2e27a;
+}
